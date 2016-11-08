@@ -3,7 +3,7 @@
 ## High Level Description 
 >A paragraph or two describing the topic of your application. What is the overall purpose of your application? Who does it serve? Explain at a high level what users will be able to do using your application.
 
-As we get older, it gets harder to commit to organized sporting leagues but we still want to participate in sports for fun. However, it can often be difficult to find enough people to organize a game. The purpose of our application is to help people find recreational, drop-in sporting events. 
+The purpose of our application is to help people find recreational, drop-in sporting events. As we get older, it gets harder to commit to organized sporting leagues but we still want to participate in sports for fun. However, it can often be difficult to find enough people to organize a game.
 
 Our web portal will allow users to organize and search for drop-in events based on sport, time and location. The targeted users will be anybody who is looking for a fun, inclusive yet low-commitment environment to partake in their favourite sports. Users can RSVP and leave comments to the event so the organizer knows who to expect. 
 
@@ -43,12 +43,12 @@ Our web portal will allow users to organize and search for drop-in events based 
 
 Dashboard
 <p align="center">
-    <img src="./FILENAME" alt="Dashboard" width="700">
+    <img src="./dashboard.jpg" alt="Dashboard" width="700">
 </p>
 
 View event listing
 <p align="center">
-    <img src="./FILENAME" alt="View event listing" width="700">
+    <img src="./event-view.jpg" alt="View event listing" width="700">
 </p>
 
 User profile
@@ -58,5 +58,5 @@ User profile
 
 Create new event
 <p align="center">
-    <img src="./FILENAME" alt="Create new event" width="700">
+    <img src="./create-an-event.jpg" alt="Create new event" width="700">
 </p>
