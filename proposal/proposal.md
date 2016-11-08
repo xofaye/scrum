@@ -53,7 +53,7 @@ View event listing
 
 User profile
 <p align="center">
-    <img src="./FILENAME" alt="User profile" width="700">
+    <img src="./user-profile.jpg" alt="User profile" width="700">
 </p>
 
 Create new event
