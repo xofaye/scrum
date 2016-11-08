@@ -41,3 +41,23 @@ Our web portal will allow users to organize and search for drop-in events based 
 
 ## Sketches
 >Sketches of what the views will look like to the user. These do not have to be fancy polished drawings, or HTML mockups. They must be legible, but they could be scanned hand drawings.
+
+Dashboard
+<p align="center">
+    <img src="./FILENAME" alt="Dashboard" width="700">
+</p>
+
+View event listing
+<p align="center">
+    <img src="./FILENAME" alt="View event listing" width="700">
+</p>
+
+User profile
+<p align="center">
+    <img src="./FILENAME" alt="User profile" width="700">
+</p>
+
+Create new event
+<p align="center">
+    <img src="./FILENAME" alt="Create new event" width="700">
+</p>
