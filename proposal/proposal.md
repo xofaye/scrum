@@ -1,29 +1,42 @@
 # CSC309 Project Proposal
 
-## Requirements 
-- [ ] Profiling (different user profiles)
-    - Able to update personal info and see profiles of other users 
-- [ ] User authentication / authorization 
-- [ ] Search feature 
-- [ ] Data 
-- [ ] Views 
-- [ ] Admin features 
-
-Optional: 
-- A third-party authentication mechanism, such as Google, Facebook, or GitHub; or two-factor authentication.
-- A social network component. Users might be able to “follow” other users if appropriate for your application.
-- A rating and/or commenting component.
-- You might consider pulling data from a third-party API.
-
-
 ## High Level Description 
 >A paragraph or two describing the topic of your application. What is the overall purpose of your application? Who does it serve? Explain at a high level what users will be able to do using your application.
 
-Purpose: Find recreational drop-in sports events around the city 
-Users: Anybody who like sports!
+As we get older, it gets harder to commit to organized sporting leagues but we still want to participate in sports for fun. However, it can often be difficult to find enough people to organize a game. The purpose of our application is to help people find recreational, drop-in sporting events. 
+
+Our web portal will allow users to search for drop-in games based on sport, time and location. The targeted users will be anybody who is looking for a fun, inclusive yet low-commitment environment to partake in their favourite sports. Users can RSVP and leave comments to the event so the organizer knows who to expect. 
 
 ## User Iteractions
 >A detailed list of the user interactions with the application. How will you get data into your application? What are all the different things a user will do when they use your application?
+
+- Profiling
+    - Users can update their personal info and see profiles of other users 
+- User authentication / authorization
+    - Users need to register for an account
+    - Users needs to be signed in to RSVP for events
+- Search feature
+    - Users will be able to search for events based on sport, date & time and/or location
+- Data
+    - User information
+        - Required: name, email, username, password
+        - Optional: other contact information, short biography
+    - Event information 
+        - Required: type, date/time, location
+        - Optional: description, number of players required
+- Views
+    - Log-in/Sign-up 
+    - View user profile
+        - Follow user or message
+    - Dashboard
+    - Search 
+    - View event listing 
+        - RSVP or leave a comment
+    - Post a new event listing 
+- Admin features
+    - Add/update/delete users and their information
+    - Can change password (but not see previous passwords!)
+    - Initiliaze or remove any posts 
 
 ## Sketches
 >Sketches of what the views will look like to the user. These do not have to be fancy polished drawings, or HTML mockups. They must be legible, but they could be scanned hand drawings.
