@@ -23,6 +23,11 @@ Our web portal will allow users to organize and search for drop-in events based 
     - Event information 
         - Required: type, date/time, location
         - Optional: description, number of players required
+        - List of attendees (User objects)
+        - Comments 
+            - User 
+            - Date/Time
+            - Comment text
 - Views
     - Log-in/Sign-up 
     - Dashboard
