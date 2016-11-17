@@ -8,6 +8,7 @@ var session = require('express-session');
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
+var MongoClient = require('mongodb').MongoClient;
 
 // auth0 creditentials 
 dotenv.load();
