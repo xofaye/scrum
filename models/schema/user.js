@@ -10,12 +10,12 @@ var userSchema=new mongoose.Schema({
   biography:{type:String, required:false},
   role:{type:String,enum:rolesEnum, default: 'PLAYER'},
   password:{type:String,required:true},
-  // eventsGoing:[
-  //     {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
-  //   ], 
-  // eventsCreated: [
-  //     {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
-  //   ]
+  eventsGoing:[
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
+    ], 
+  eventsCreated: [
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
+    ]
 })
 
 module.exports=mongoose.model("User", userSchema);
