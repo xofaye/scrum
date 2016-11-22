@@ -10,7 +10,7 @@ var env = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CSC309 Project', env: env });
+  res.render('index.html', { title: 'CSC309 Project', env: env });
 });
 
 router.get('/login',
