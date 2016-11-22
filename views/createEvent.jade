@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h2 Create New Event
+  br
+
+  form(method='POST')
+    div.input
+      span.label Title
+      input(type='text', name='title' required='true')
+    div.input
+      span.label Location
+      input(type='text', name='location' required='true')
+    div.input
+      span.label Time
+      input(type='date', name='date' required='true')
+    div.input
+      span.label Sport
+      select(id='sport' name='type' required='true')
+        option(value="Hockey") Hockey
+        option(value="Soccer") Soccer
+    div.input
+      span.label Description
+      textarea(name='description', cols='40', rows='10')
+    div.input
+      span.label Number of Players
+      input(type='text', name='numRequired')
+    div.actions
+      input(type='submit', value='add')
