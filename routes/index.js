@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var createEvent = require('./createEvent');
+var event = require('./event');
+var Event = require('../models/schema/event');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -42,6 +45,17 @@ module.exports = function(passport){
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('home', { user: req.user });
 	});
+
+	/* GET Create Event Page */
+	router.get('/createEvent', isAuthenticated, function(req, res) {
+		res.render('createEvent', { user: req.user });
+	});
+
+	/* POST Create Event */
+	router.post('/createEvent', isAuthenticated, createEvent.addEvent);
+
+	/* GET Create Event Page */
+	router.get('/event', isAuthenticated, event.loadEvent);
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

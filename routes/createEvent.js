@@ -1,23 +1,28 @@
 var express = require('express');
-var passport = require('passport');
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 var Event = require('../models/schema/event');
+var User = require('../models/schema/user');
 
-/* GET user profile. */
-router.get('/', ensureLoggedIn, function(req, res, next) {
-  res.render('createEvent', { user: req.user });
-});
+module.exports = router;
 
-router.post('/', function(req, res) {
+module.exports.addEvent = function(req, res) {
 	console.log("Add event");
 	console.log(req.body);
 	var newEvent = new Event(req.body);
-
-	newEvent.save(function(err, newBook) {
+	newEvent.date = new Date(req.body.date);
+	newEvent.createdBy = req.user._id;
+	// Add new event to db
+	newEvent.save(function(err, newEvent) {
 		if (err) throw err;
-		res.send('Success');
+		// Add event to user created events
+		User.findOne({_id: req.user._id}, function(err, user) {
+			if (err) throw err;
+			user.eventsCreated.push(newEvent._id);
+			user.save(function(err, user) {
+				if (err) throw err;
+				res.render('home', { user: user });
+			});
+		});
 	})
-});
 
-module.exports = router;
+};

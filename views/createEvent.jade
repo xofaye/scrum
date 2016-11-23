@@ -1,29 +1,24 @@
 extends layout
 
 block content
-  h2 Create New Event
-  br
-
-  form(method='POST')
-    div.input
-      span.label Title
-      input(type='text', name='title' required='true')
-    div.input
-      span.label Location
-      input(type='text', name='location' required='true')
-    div.input
-      span.label Time
-      input(type='date', name='date' required='true')
-    div.input
-      span.label Sport
-      select(id='sport' name='type' required='true')
-        option(value="Hockey") Hockey
-        option(value="Soccer") Soccer
-    div.input
-      span.label Description
-      textarea(name='description', cols='40', rows='10')
-    div.input
-      span.label Number of Players
-      input(type='text', name='numRequired')
-    div.actions
-      input(type='submit', value='add')
+  -
+    sportsEnum = ["BADMINTON", "BASKETBALL", "BOWLING", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
+    "HOCKEY", "CRICKET", "WATER POLO", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
+    "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
+    
+  div.container-fluid
+      div.col-sm-6.col-md-8
+        #eventfields
+          h1.text-left.event-title Create an Event
+            div.createvent-wall
+              form(class='form-event', method='POST')
+                input(type='text', name='title', class='form-control', placeholder='Title',required, autofocus)
+                input(type='text', name='location', class='form-control', placeholder='Location',required, autofocus)
+                input(type='datetime-local', name='date', class='form-control', placeholder='Date & Time',required, autofocus)
+                select(name='type', class='form-control', placeholder='Activity',required, autofocus)
+                  each item in sportsEnum
+                    option= item
+                textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
+                input(type='number', name='numRequired', class='form-control', placeholder='Number of Players')
+                button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
+                span.clearfix
