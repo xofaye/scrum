@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var users = require('./user.js');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -42,6 +43,12 @@ module.exports = function(passport){
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('home', { user: req.user });
 	});
+
+	router.post('/editProfile', users.updateProfile)
+		// console.log(req.body.user.name);
+		// console.log(req.user);
+		// res.send(req.body);
+		//res.render('home', { user: req.user })
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

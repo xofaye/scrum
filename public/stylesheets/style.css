@@ -11,14 +11,18 @@ a {
   color: #00B7FF;
 }
 
-.account-info {
+.form-editProfile{
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 20px;
+}
+/*.account-info {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     padding-right: 20px;
 }
 
 .account-info li{
     padding: 5px;
-}
+}*/
 
 .form-signin{
     max-width: 330px;
