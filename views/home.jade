@@ -18,27 +18,22 @@ block content
 						div.signup-wall
 							div.account-info
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
-								form#editProfile.form-editProfile(action='/editProfile', method='POST')
+								form#editProfile.form-editProfile(action='/home', method='POST')
 									.form-group
 										label(for='inputName')
 											| Name: 
 											span(style='font-weight: normal') #{user.fullName}
-										input#inputName.form-control(type='text', name='user[name]', placeholder='Name')
+										input#inputName.form-control(type='text', name='fullName', placeholder='Name')
 									.form-group
 										label(for='inputEmail')
 											| Email: 
 											span.form-control-static  #{user.email}
-										input#inputEmail.form-control(type='text', name='user[email]', placeholder='Email')
+										input#inputEmail.form-control(type='text', name='email', placeholder='Email')
 									.form-group
 										label(for='inputInfo')
 											| Info: 
 											span #{user.biography}
-										textarea#inputInfo.form-control(rows='4', name='user[bio]', placeholder='Bio')
-									.form-group
-										label(for='inputFavSport')
-											| Favourite Sports: 
-											span favesport
-										input#inputFavSport.form-control(type='text', name='user[favsport]', placeholder='Favourite Sports')
+										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio')
 									button.btn.btn-default(type='submit') Submit
 						#events
 							h1.text-left.login-title Events Created

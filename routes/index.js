@@ -44,7 +44,11 @@ module.exports = function(passport){
 		res.render('home', { user: req.user });
 	});
 
-	router.post('/editProfile', users.updateProfile)
+	router.post('/home', isAuthenticated, users.updateProfile)
+	// 	var u = users.updateProfile(req, res);
+	// 	console.log(u);
+	// 	res.render('home', {user: u});
+	// })
 		// console.log(req.body.user.name);
 		// console.log(req.user);
 		// res.send(req.body);
