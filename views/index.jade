@@ -1,18 +1,148 @@
-extends layout
-
-block content
-	div.container
-		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
-				h1.text-center.login-title Sign in to our Passport app
-					div.account-wall
-						img(class='profile-img', src='https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120')
-						form(class='form-signin', action='/login', method='POST')
-							input(type='text', name='username' class='form-control', placeholder='Email',required, autofocus)
-							input(type='password', name='password' class='form-control', placeholder='Password', required)
-							button(class='btn btn-lg btn-primary btn-block', type='submit') Sign in
-							span.clearfix
-					a(href='/signup', class='text-center new-account') Create an account
-					#message
-					if message
-						h1.text-center.error-message #{message}
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Scrum : Sports for busy professionals
+    // Bootstrap Core CSS
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='/css/landing.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    // Navigation
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='index.html') Scrum
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/login') Log In
+            li
+              a(href='/signup') Register
+        // /.navbar-collapse
+      // /.container
+    // Header Carousel
+    header#myCarousel.carousel.slide
+      // Indicators
+      .fill(style="background-image:url('/img/main.jpeg');")
+      .carousel-caption
+        h2 Have all the fun. Make all the friends. Play all the sports.
+    // Page Content
+    .container
+      // Marketing Icons Section
+      .row
+        .col-lg-12
+          h1.page-header
+            | Welcome to Scrum
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              h4
+                i.fa.fa-fw.fa-calendar
+                |  Low commitment
+            .panel-body
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              h4
+                i.fa.fa-fw.fa-users
+                |  Connect with new people
+            .panel-body
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              h4
+                i.fa.fa-fw.fa-futbol-o
+                |  Variety of Sports
+            .panel-body
+              p
+                | From basketball to broomball, we offer a variety of sports. Can't find your sport? No problem! Feel free to send a request to get your sport listed.
+      // /.row
+      // Recent Listings
+      .row
+        .col-lg-12
+          h2.page-header Recent Events
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+        .col-md-4.col-sm-6
+          a(href='#')
+            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      // /.row
+      // Features Section
+      .row
+        .col-lg-12
+          h2.page-header Modern Business Features
+        .col-md-6
+          p The Modern Business template by Start Bootstrap includes:
+          ul
+            li
+              strong Bootstrap v3.3.7
+            li jQuery v1.11.1
+            li Font Awesome v4.2.0
+            li Working PHP contact form with validation
+            li Unstyled page elements for easy customization
+            li 17 HTML pages
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.
+        .col-md-6
+          img.img-responsive(src='http://placehold.it/700x450', alt='')
+      // /.row
+      hr
+      // Call to Action Section
+      .well
+        .row
+          .col-md-8
+            p What are you waiting for? Sign up now for more info!
+          .col-md-4
+            a.btn.btn-lg.btn-default.btn-block(href='#') Get Started
+      hr
+      // Footer
+      footer
+        .row
+          .col-lg-12
+            p Copyright © CSC309 Project
+    // /.container
+    // jQuery
+    script(src='../js/jquery.js')
+    // Bootstrap Core JavaScript
+    script(src='../js/bootstrap.min.js')
+    // Script to Activate the Carousel
+    script.
+      $('.carousel').carousel({
+      interval: 5000 //changes the speed
+      })
