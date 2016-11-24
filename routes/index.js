@@ -1,33 +1,82 @@
 var express = require('express');
-var passport = require('passport');
 var router = express.Router();
+var users = require('./user.js');
+var createEvent = require('./createEvent');
+var event = require('./event');
+var Event = require('../models/schema/event');
 
-var env = {
-  AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
-  AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-  AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
-};
+var isAuthenticated = function (req, res, next) {
+	// if user is authenticated in the session, call the next() to call the next request handler 
+	// Passport adds this method to request object. A middleware is allowed to add properties to
+	// request and response objects
+	if (req.isAuthenticated())
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CSC309 Project', env: env });
-});
+module.exports = function(passport){
 
-router.get('/login',
-  function(req, res){
-    res.render('login', { env: env });
-  });
+	/* GET login page. */
+	router.get('/', function(req, res) {
+    	// Display the Login page with any flash message, if any
+		res.render('index', { message: req.flash('message') });
+	});
 
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
+	/* Handle Login POST */
+	router.post('/login', passport.authenticate('login', {
+		successRedirect: '/home',
+		failureRedirect: '/',
+		failureFlash : true  
+	}));
 
-router.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
-  function(req, res) {
-    res.redirect(req.session.returnTo || '/user');
-  });
+	/* GET Registration Page */
+	router.get('/signup', function(req, res){
+		res.render('register',{message: req.flash('message')});
+	});
+
+	/* Handle Registration POST */
+	router.post('/signup', passport.authenticate('signup', {
+		successRedirect: '/home',
+		failureRedirect: '/signup',
+		failureFlash : true  
+	}));
+
+	/* GET Home Page */
+	router.get('/home', isAuthenticated, function(req, res){
+		res.render('home', { user: req.user });
+	});
+
+	router.post('/home', isAuthenticated, users.updateProfile);
+	// 	var u = users.updateProfile(req, res);
+	// 	console.log(u);
+	// 	res.render('home', {user: u});
+	// })
+		// console.log(req.body.user.name);
+		// console.log(req.user);
+		// res.send(req.body);
+		//res.render('home', { user: req.user })
+
+	/* GET Create Event Page */
+	router.get('/createEvent', isAuthenticated, function(req, res) {
+		res.render('createEvent', { user: req.user });
+	});
+
+	/* POST Create Event */
+	router.post('/createEvent', isAuthenticated, createEvent.addEvent);
+
+	/* GET Create Event Page */
+	router.get('/event', isAuthenticated, event.loadEvent);
+
+	/* Handle Logout */
+	router.get('/signout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+
+	return router;
+}
 
 
-module.exports = router;
+
+

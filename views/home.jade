@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	div.container-fluid
+		div.row
+			div.col-sm-3.col-md-2.sidebar
+				ul.nav.nav-sidebar
+					li
+						img.img-responsive.img-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', width='200', height='200', alt='Generic placeholder thumbnail')
+					li
+						h4 #{user.fullName}
+					li.text-muted
+						p Status
+
+			div.col-sm-6.col-md-8
+				#user
+					h1.text-left.login-title Hi #{user.fullName}. Check your details below:
+						div.signup-wall
+							div.account-info
+								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
+								form#editProfile.form-editProfile(action='/home', method='POST')
+									.form-group
+										label(for='inputName')
+											| Name: 
+											span(style='font-weight: normal') #{user.fullName}
+										input#inputName.form-control(type='text', name='fullName', placeholder='Name', style='display:none')
+									.form-group
+										label(for='inputEmail')
+											| Email: 
+											span(style='font-weight: normal')  #{user.email}
+										input#inputEmail.form-control(type='text', name='email', placeholder='Email', style='display:none')
+									.form-group
+										label(for='inputInfo')
+											| Info: 
+											span(style='font-weight: normal') #{user.biography}
+										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio', style='display:none')
+									button.btn.btn-default(type='submit', style='display:none') Submit
+						#events
+							h1.text-left.login-title Events Created
+							ul
+								each event in user.eventsCreated
+									li
+										a(href='/event?id='+event)= event
