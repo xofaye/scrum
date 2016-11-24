@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.container-fluid
+      div.col-sm-6.col-md-8
+        #event
+          h1.text-left.event-title #{event.title}
+            div.event-wall
+              div.event-info
+                a.btn.btn-default.pull-right(onclick='#', role='button') Edit
+                ul.event-details
+                  li Captain: #{event.createdBy}
+                  li Date: #{event.date}
+                  li Location: #{event.location} 
+                  li Activity: #{event.type}
+                  li Number of Players: #{event.numRequired}
+                hr(style="margin-left:20px;")
+                div.event-description
+                  p #{event.description}
+
+            #comments
+              h1.text-left.comments-title Comments
+              div.comments-section
+                ul
+                  each comment in event.comments
+                    li comment

@@ -37,3 +37,7 @@ block content
 									button.btn.btn-default(type='submit', style='display:none') Submit
 						#events
 							h1.text-left.login-title Events Created
+							ul
+								each event in user.eventsCreated
+									li
+										a(href='/event?id='+event)= event
