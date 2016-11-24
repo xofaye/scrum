@@ -63,9 +63,9 @@ module.exports = function(passport){
 		//res.render('home', { user: req.user })
 
 	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
-	});
+	// router.get('/home', isAuthenticated, function(req, res){
+	// 	res.render('home', { user: req.user });
+	// });
 
 	/* GET Create Event Page */
 	router.get('/createEvent', isAuthenticated, function(req, res) {
@@ -79,7 +79,7 @@ module.exports = function(passport){
 	router.get('/event', isAuthenticated, event.loadEvent);
 
 	/* GET Search Event */
-	router.get('/search', isAuthenticated, searchEvent.findEvents);
+	router.get('/home', isAuthenticated, searchEvent.findEvents);
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

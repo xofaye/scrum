@@ -6,6 +6,8 @@ block content
     "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
     "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
 
+  h1 Dashboard 
+
   div.container-fluid
       form(class='form-event', method='GET')
                 select(name='type', class='form-control', placeholder='Activity', autofocus)
@@ -14,7 +16,7 @@ block content
                 input(type='text', name='location', class='form-control', placeholder='Location', autofocus)
                 input(type='datetime-local', id = 'startdate', name='startdate', class='form-control', placeholder='Start Date', autofocus)
                 input(type='datetime-local', id = 'enddate', name='enddate', class='form-control', placeholder='End Date', autofocus)
-                button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
+                button(class='btn btn-lg btn-primary btn-block', type='submit') Search
                 span.clearfix
 
       div.col-sm-6.col-md-8
