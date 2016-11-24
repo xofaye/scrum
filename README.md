@@ -8,6 +8,12 @@ Install the dependencies.
 npm install
 ```
 
+Start the MongoDB server
+```bash 
+mkdir data
+mongod --dbpath=$PWD/data
+```
+
 Run the app.
 
 ```bash
