@@ -12,11 +12,6 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index.html', { title: 'CSC309 Project', env: env });
-});
-
 module.exports = function(passport){
 
 	/* GET login page. */
@@ -67,8 +62,6 @@ module.exports = function(passport){
 
 	return router;
 }
->>>>>>> c2721054522fbf19762f8c1a909379efa46ecc29
-
 
 
 
