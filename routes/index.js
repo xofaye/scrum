@@ -48,9 +48,7 @@ module.exports = function(passport){
 	}));
 
 	/* GET profile page */
-	router.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { user: req.user });
-	});
+	router.get('/profile', isAuthenticated, users.viewProfile);
 
 	router.post('/profile', isAuthenticated, users.updateProfile);
 	// 	var u = users.updateProfile(req, res);

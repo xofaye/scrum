@@ -45,3 +45,15 @@ module.exports.updateProfile = function(req, res) {
 	//res.send(u);
 
 }
+
+module.exports.viewProfile = function(req, res) {
+	id = req.user.id; 
+	if(req.query.id){
+		id = req.query.id; 
+	}
+	User.findOne({_id: id}, function(err, profile) {
+		if (err) throw err;
+		res.render('profile', { "user": req.user, "profile": profile });
+	});
+
+}
