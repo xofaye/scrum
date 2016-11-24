@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var users = require('./user.js');
 var createEvent = require('./createEvent');
+var searchEvent = require('./searchEvent');
 var event = require('./event');
 var Event = require('../models/schema/event');
 
@@ -17,10 +18,14 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-	/* GET login page. */
 	router.get('/', function(req, res) {
+		res.render('index', { user : req.user });
+	});
+
+	/* GET login page. */
+	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.render('index', { message: req.flash('message') });
+		res.render('login', { message: req.flash('message') });
 	});
 
 	/* Handle Login POST */
@@ -37,17 +42,17 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
+		successRedirect: '/profile',
 		failureRedirect: '/signup',
 		failureFlash : true  
 	}));
 
-	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
+	/* GET profile page */
+	router.get('/profile', isAuthenticated, function(req, res){
+		res.render('profile', { user: req.user });
 	});
 
-	router.post('/home', isAuthenticated, users.updateProfile);
+	router.post('/profile', isAuthenticated, users.updateProfile);
 	// 	var u = users.updateProfile(req, res);
 	// 	console.log(u);
 	// 	res.render('home', {user: u});
@@ -56,6 +61,11 @@ module.exports = function(passport){
 		// console.log(req.user);
 		// res.send(req.body);
 		//res.render('home', { user: req.user })
+
+	/* GET Home Page */
+	// router.get('/home', isAuthenticated, function(req, res){
+	// 	res.render('home', { user: req.user });
+	// });
 
 	/* GET Create Event Page */
 	router.get('/createEvent', isAuthenticated, function(req, res) {
@@ -67,6 +77,9 @@ module.exports = function(passport){
 
 	/* GET Create Event Page */
 	router.get('/event', isAuthenticated, event.loadEvent);
+
+	/* GET Search Event */
+	router.get('/home', isAuthenticated, searchEvent.findEvents);
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

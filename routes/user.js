@@ -35,7 +35,7 @@ module.exports.updateProfile = function(req, res) {
 		});
 		//res.send(user);
 		res.status(200);
-		res.redirect("/home");
+		res.redirect("/profile");
 		//return user;
 		//console.log(user);
 	});

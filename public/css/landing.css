@@ -12,12 +12,23 @@ body {
 }
 
 body {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'PT Sans', 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+  font-size: 16px;
+  position: relative;
+  min-height: 100%;
+  background-color: #fff;
+  color: #333;
+}
+
+body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .navbar {
     color: #fff;
-    background-color: #002A5C;
+    background-color: none;
 }
 
 .img-portfolio {
