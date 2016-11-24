@@ -23,17 +23,17 @@ block content
 										label(for='inputName')
 											| Name: 
 											span(style='font-weight: normal') #{user.fullName}
-										input#inputName.form-control(type='text', name='fullName', placeholder='Name')
+										input#inputName.form-control(type='text', name='fullName', placeholder='Name', style='display:none')
 									.form-group
 										label(for='inputEmail')
 											| Email: 
-											span.form-control-static  #{user.email}
-										input#inputEmail.form-control(type='text', name='email', placeholder='Email')
+											span(style='font-weight: normal')  #{user.email}
+										input#inputEmail.form-control(type='text', name='email', placeholder='Email', style='display:none')
 									.form-group
 										label(for='inputInfo')
 											| Info: 
-											span #{user.biography}
-										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio')
-									button.btn.btn-default(type='submit') Submit
+											span(style='font-weight: normal') #{user.biography}
+										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio', style='display:none')
+									button.btn.btn-default(type='submit', style='display:none') Submit
 						#events
 							h1.text-left.login-title Events Created
