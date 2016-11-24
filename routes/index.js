@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var users = require('./user.js');
 var createEvent = require('./createEvent');
+var searchEvent = require('./searchEvent');
 var event = require('./event');
 var Event = require('../models/schema/event');
 
@@ -17,11 +18,11 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-	/* GET login page. */
 	router.get('/', function(req, res) {
 		res.render('index', { user : req.user });
 	});
 
+	/* GET login page. */
 	router.get('/login', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('login', { message: req.flash('message') });
@@ -76,6 +77,9 @@ module.exports = function(passport){
 
 	/* GET Create Event Page */
 	router.get('/event', isAuthenticated, event.loadEvent);
+
+	/* GET Search Event */
+	router.get('/search', isAuthenticated, searchEvent.findEvents);
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

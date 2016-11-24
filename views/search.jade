@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  -
+    sportsEnum = ["", "BADMINTON", "BASKETBALL", "BOWLING", "CRICKET", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
+    "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
+    "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
+
+  div.container-fluid
+      form(class='form-event', method='GET')
+                select(name='type', class='form-control', placeholder='Activity', autofocus)
+                  each item in sportsEnum
+                    option= item
+                input(type='text', name='location', class='form-control', placeholder='Location', autofocus)
+                input(type='datetime-local', id = 'startdate', name='startdate', class='form-control', placeholder='Start Date', autofocus)
+                input(type='datetime-local', id = 'enddate', name='enddate', class='form-control', placeholder='End Date', autofocus)
+                button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
+                span.clearfix
+
+      div.col-sm-6.col-md-8
+      
+      for event in events
+        #event
+          h1.text-left.event-title #{event.title}
+            div.event-wall
+              div.event-info
+                a.btn.btn-default.pull-right(onclick='#', role='button') Edit
+                ul.event-details
+                  li Captain: #{event.createdBy}
+                  li Date: #{event.date}
+                  li Location: #{event.location} 
+                  li Activity: #{event.type}
+                  li Number of Players: #{event.numRequired}
+                hr(style="margin-left:20px;")
+                div.event-description
+                  p #{event.description}
+

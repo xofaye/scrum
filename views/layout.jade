@@ -21,16 +21,19 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-        a.navbar-brand(href='#') Scrum
+        if user
+          a.navbar-brand(href='/home') Scrum
+        else 
+          a.navbar-brand(href='/') Scrum
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
             if user
               li
-                a(href='/home') Dashboard
+                a(href='/search') Search
+              li
+                a(href='/createEvent') Create Event
               li
                 a(href='/profile') Profile
-              li
-                 a(href='/createEvent') Create Event
               li
                 a(href='/signout') Sign Out
             else
