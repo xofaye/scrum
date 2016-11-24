@@ -11,6 +11,6 @@ module.exports.loadEvent = function(req, res) {
 
 	Event.findOne({_id: req.query.id}, function(err, event) {
 		if (err) throw err;
-		res.render('event', { event: event });
+		res.render('event', { event: event, user:req.user });
 	});
 };
