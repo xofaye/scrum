@@ -70,6 +70,8 @@ module.exports = function(passport){
 	/* GET Create Event Page */
 	router.get('/event', isAuthenticated, event.loadEvent);
 
+	router.post('/event', isAuthenticated, event.updateEvent);
+
 	/* GET Search Event */
 	router.get('/home', isAuthenticated, searchEvent.findEvents);
 

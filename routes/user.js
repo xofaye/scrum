@@ -23,10 +23,6 @@ module.exports.updateProfile = function(req, res) {
 		newBio = u.biography;
 	}
 
-	// User.findById(u._id, function(err, user){
-	// 	if (err) throw err;
-	// 	res.send(user);
-	// })
 
 	User.findByIdAndUpdate(u._id, {fullName : newName, email : newEmail, biography : newBio}, {new : true}, function(err, user) {
 		if (err) throw err;
@@ -41,10 +37,6 @@ module.exports.updateProfile = function(req, res) {
 		//console.log(user);
 	});
 
-	//console.log(User.findOne({_id:u._id}));
-	//return User.findOne({_id: u._id});
-	//res.send(u);
-
 }
 
 module.exports.viewProfile = function(req, res) {
@@ -58,7 +50,7 @@ module.exports.viewProfile = function(req, res) {
 	// 	console.log(e);
 	// })
 
-	User.findOne({_id: id}).populate('eventsCreated').exec(function(err, profile) {
+	User.findOne({_id: id}).populate('eventsCreated title', 'eventsGoing title').exec(function(err, profile) {
 		if (err) throw err;
 		// var e = []
 		// for (var i=0; i< req.user.eventsCreated.length; i++) {

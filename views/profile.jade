@@ -25,7 +25,7 @@ block content
 								li.user-details Email: #{profile.email}
 								li.user-details Info: #{profile.info}
 								li.user-details Biography: #{profile.biography}
-						if user.id === profile.id
+						if ( user.id === profile.id || user.role === "ADMIN" )
 							div.edit-profile.col-md-6
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
 
