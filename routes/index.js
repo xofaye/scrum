@@ -13,7 +13,7 @@ var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	// if the user is not authenticated then redirect him to the login page
-	res.redirect('/');
+	res.redirect('/login');
 }
 
 module.exports = function(passport){
@@ -48,9 +48,7 @@ module.exports = function(passport){
 	}));
 
 	/* GET profile page */
-	router.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { user: req.user });
-	});
+	router.get('/profile', isAuthenticated, users.viewProfile);
 
 
 	/* POST Edit User Profile*/

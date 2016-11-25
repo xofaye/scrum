@@ -21,22 +21,23 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-        if user
+        if (user)
           a.navbar-brand(href='/home') Scrum
         else 
           a.navbar-brand(href='/') Scrum
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
-            if user
+            - if (user){
               li
                 a(href='/createEvent') Create Event
               li
                 a(href='/profile') Profile
               li
                 a(href='/signout') Sign Out
-            else
+            - } else{
               li
                 a(href='/login') Log In
               li
                 a(href='/signup') Register
+            - }
     block content

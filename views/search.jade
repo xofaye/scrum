@@ -26,9 +26,9 @@ block content
           h1.text-left.event-title #{event.title}
             div.event-wall
               div.event-info
-                a.btn.btn-default.pull-right(onclick='#', role='button') Edit
                 ul.event-details
-                  li Captain: #{event.createdBy}
+                  li 
+                    |Organizer: #[a(href='/profile?id='+event.createdBy)= event.createdBy]
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}

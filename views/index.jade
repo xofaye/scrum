@@ -42,9 +42,9 @@ html(lang='en')
     // Header Carousel
     header#myCarousel.carousel.slide
       // Indicators
-      .fill(style="background-image:url('/img/main.jpeg');")
-      .carousel-caption
-        h2 Have all the fun. Make all the friends. Play all the sports.
+      .fill(style="background-image:url('/img/header.jpg');")
+      //.carousel-caption
+      //  h2 Recreational sports for the busy millennial
     // Page Content
     .container
       // Marketing Icons Section
@@ -60,7 +60,7 @@ html(lang='en')
                 |  Low commitment
             .panel-body
               p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                | As we get older, we find it harder to commit to competitive sports. Scrum offers a way to participate in sports recreationally in a low commitment environment. 
         .col-md-4
           .panel.panel-default
             .panel-heading
@@ -69,7 +69,7 @@ html(lang='en')
                 |  Connect with new people
             .panel-body
               p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                | Playing sports is a great way to make new friends in a fun, inclusive environment! Come find other people around you to partake in your favourite sports. 
         .col-md-4
           .panel.panel-default
             .panel-heading
@@ -81,46 +81,42 @@ html(lang='en')
                 | From basketball to broomball, we offer a variety of sports. Can't find your sport? No problem! Feel free to send a request to get your sport listed.
       // /.row
       // Recent Listings
-      .row
-        .col-lg-12
-          h2.page-header Recent Events
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
-        .col-md-4.col-sm-6
-          a(href='#')
-            img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //.row
+      //  .col-lg-12
+      //    h2.page-header Recent Events
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
+      //  .col-md-4.col-sm-6
+      //    a(href='#')
+      //      img.img-responsive.img-portfolio.img-hover(src='http://placehold.it/700x450', alt='')
       // /.row
       // Features Section
       .row
         .col-lg-12
-          h2.page-header Modern Business Features
+          h2.page-header About Us 
         .col-md-6
-          p The Modern Business template by Start Bootstrap includes:
+          p Scrum includes the following features:
           ul
-            li
-              strong Bootstrap v3.3.7
-            li jQuery v1.11.1
-            li Font Awesome v4.2.0
-            li Working PHP contact form with validation
-            li Unstyled page elements for easy customization
-            li 17 HTML pages
+            li Organize your own event
+            li Search for existing events based on time, sport and location
+            li Connect with other people around you 
           p
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.
+            | We're a group of three University of Toronto students in Computer Science who are passionate about helping you find your love for recreational sports again. Staying active and playing sports has numerous physical, social and psychological benefits! Yay sports.
         .col-md-6
-          img.img-responsive(src='http://placehold.it/700x450', alt='')
+          img.img-responsive(src='https://images.unsplash.com/photo-1434626982825-b030fb94f5be?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=765e963091cc5fe45d24905df796dab3', alt='')
       // /.row
       hr
       // Call to Action Section
@@ -129,7 +125,7 @@ html(lang='en')
           .col-md-8
             p What are you waiting for? Sign up now for more info!
           .col-md-4
-            a.btn.btn-lg.btn-default.btn-block(href='#') Get Started
+            a.btn.btn-lg.btn-default.btn-block(href='/signup') Get Started
       hr
       // Footer
       footer
@@ -141,8 +137,3 @@ html(lang='en')
     script(src='../js/jquery.js')
     // Bootstrap Core JavaScript
     script(src='../js/bootstrap.min.js')
-    // Script to Activate the Carousel
-    script.
-      $('.carousel').carousel({
-      interval: 5000 //changes the speed
-      })

@@ -65,6 +65,11 @@ if (app.get('env') === 'development') {
     });
 }
 
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 module.exports = app;
 
 app.listen(3000);
