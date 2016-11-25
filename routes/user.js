@@ -53,7 +53,7 @@ module.exports.viewProfile = function(req, res) {
 	}
 	User.findOne({_id: id}, function(err, profile) {
 		if (err) throw err;
-		res.render('profile', { "user": req.user, "profile": profile });
+		res.render('profile', { "user": req.user, "profile": profile, "events":req.user.eventsGoing });
 	});
 
 }

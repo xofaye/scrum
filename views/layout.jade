@@ -6,9 +6,9 @@ html
     link(rel='stylesheet', href='css/bootstrap.min.css')
   script.
     var showFormInput = function() {
-      var form = document.getElementById("editProfile").elements;
+      var form = document.getElementsByClassName("form-group");
         for (var i=0; i<form.length; i++){
-          form.item(i).style.display = "block";
+          form[i].style.display = "block";
         }
     }
     

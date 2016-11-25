@@ -17,12 +17,15 @@ a {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     padding: 20px;
 }
-/*.account-info {
+
+
+.account-info {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    padding-right: 20px;
+    padding: 20px;
+
 }
 
-.account-info li{
+/*.account-info li{
     padding: 5px;
 }*/
 
@@ -104,6 +107,10 @@ h1.error-message{
 }
 ul.user-details{
     list-style: none;
+}
+
+li.user-details{
+    margin-bottom: 20px;
 }
 
 /*View Event*/
