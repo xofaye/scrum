@@ -9,7 +9,7 @@ module.exports.loadEvent = function(req, res) {
 	console.log("Load event");
 	console.log(req.query);
 
-	Event.findOne({_id: req.query.id}, function(err, event) {
+	Event.findOne({_id: req.query.id}).populate('createdBy').exec(function(err, event) {
 		if (err) throw err;
 		res.render('event', { event: event, user:req.user });
 	});

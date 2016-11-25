@@ -1,4 +1,5 @@
 var User = require('../models/schema/user');
+//var Event = require('../models/schema/event');
 
 
 module.exports.updateProfile = function(req, res) {
@@ -51,9 +52,23 @@ module.exports.viewProfile = function(req, res) {
 	if(req.query.id){
 		id = req.query.id; 
 	}
-	User.findOne({_id: id}, function(err, profile) {
+
+	// User.findOne({_id: id}).populate('eventsCreated').exec(function(err, e) {
+	// 	if (err) throw err;
+	// 	console.log(e);
+	// })
+
+	User.findOne({_id: id}).populate('eventsCreated').exec(function(err, profile) {
 		if (err) throw err;
-		res.render('profile', { "user": req.user, "profile": profile, "events":req.user.eventsGoing });
+		// var e = []
+		// for (var i=0; i< req.user.eventsCreated.length; i++) {
+		// 	//console.log(req.user.eventsCreated[i]);
+		// 	//console.log(Event.findOne({_id: req.user.eventsCreated[i]}));
+		// 	e.push(Event.findOne({_id: req.user.eventsCreated[i]}))
+		// }
+		//Event.findById()
+		console.log(req.user);
+		res.render('profile', { "user": req.user, "profile": profile });
 	});
 
 }

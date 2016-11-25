@@ -10,7 +10,7 @@ block content
                 a.btn.btn-default.pull-right(onclick='#', role='button') Edit
                 ul.event-details
                   li 
-                    |Organizer: #[a(href='/profile?id='+event.createdBy)= event.createdBy]
+                    |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}

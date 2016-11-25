@@ -1,9 +1,5 @@
 extends layout
 
-script.
-	var eString = JSON.stringify(profile.eventsGoing);
-	console.log(eString);
-
 block content
 	div.container-fluid
 		div.row
@@ -53,4 +49,4 @@ block content
 						ul
 							each event in profile.eventsCreated
 								li
-									a(href='/event?id='+event)= event.title
+									a(href='/event?id='+event._id)= event.title
