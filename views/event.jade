@@ -27,10 +27,11 @@ block content
                   a.btn.btn-default.pull-right(onclick='#', role='button') Delete
                   a.btn.btn-default.pull-right(onclick='showForm()', role='button') Edit
                   form#editEvent(action='/event', method='POST', style='display: none')
-                    input(type='text', name='title', class='form-control', placeholder='Title',required, autofocus)
-                    input(type='text', name='location', class='form-control', placeholder='Location',required, autofocus)
-                    input(type='datetime-local', name='date', class='form-control', placeholder='Date & Time',required, autofocus)
-                    select(name='type', class='form-control', placeholder='Activity',required, autofocus)
+                    input( name='id', value=event._id, style='display:none')
+                    input(type='text', name='title', class='form-control', placeholder='Title')
+                    input(type='text', name='location', class='form-control', placeholder='Location')
+                    input(type='datetime-local', name='date', class='form-control', placeholder='Date & Time')
+                    select(name='type', class='form-control', placeholder='Activity')
                       each item in sportsEnum
                         option= item
                     textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
