@@ -11,10 +11,10 @@ var userSchema=new mongoose.Schema({
   role:{type:String,enum:rolesEnum, default: 'PLAYER'},
   password:{type:String,required:true},
   eventsGoing:[
-      {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Event'}
     ], 
   eventsCreated: [
-      {type: mongoose.Schema.Types.ObjectId, ref: 'Events'}
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Event'}
     ]
 })
 

@@ -1,16 +1,20 @@
 extends layout
 
 block content
+  -
+    sportsEnum = ["BADMINTON", "BASKETBALL", "BOWLING", "CRICKET", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
+    "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
+    "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
+
   div.container-fluid
       div.col-sm-6.col-md-8
         #event
           h1.text-left.event-title #{event.title}
-            div.event-wall
-              div.event-info
-                a.btn.btn-default.pull-right(onclick='#', role='button') Edit
+            div.event-wall.container-fluid
+              div.event-info.col-md-6
                 ul.event-details
                   li 
-                    |Organizer: #[a(href='/profile?id='+event.createdBy)= event.createdBy]
+                    |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
@@ -18,6 +22,21 @@ block content
                 hr(style="margin-left:20px;")
                 div.event-description
                   p #{event.description}
+              if (user._id.equals(event.createdBy._id) || user.role === "ADMIN")
+                div.edit-event.col-md-6
+                  a.btn.btn-default.pull-right(onclick='#', role='button') Delete
+                  a.btn.btn-default.pull-right(onclick='showForm()', role='button') Edit
+                  form#editEvent(action='/event', method='POST', style='display: none')
+                    input( name='id', value=event._id, style='display:none')
+                    input(type='text', name='title', class='form-control', placeholder='Title')
+                    input(type='text', name='location', class='form-control', placeholder='Location')
+                    input(type='datetime-local', name='date', class='form-control', placeholder='Date & Time')
+                    select(name='type', class='form-control', placeholder='Activity')
+                      each item in sportsEnum
+                        option= item
+                    textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
+                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players')
+                    button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
 
             #comments
               h1.text-left.comments-title Comments

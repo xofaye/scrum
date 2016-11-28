@@ -18,30 +18,35 @@ block content
 						h1.text-left.login-title Hi #{profile.fullName}. Check your details below:
 					else
 						#{profile.fullName}
-					div.signup-wall
-						div.account-info
-							if user.id === profile.id
+					div.signup-wall.container-fluid
+						div.account-info.col-md-6
+							ul.user-details
+								li.user-details Name: #{profile.fullName}
+								li.user-details Email: #{profile.email}
+								li.user-details Info: #{profile.info}
+								li.user-details Biography: #{profile.biography}
+						if ( user.id === profile.id || user.role === "ADMIN" )
+							div.edit-profile.col-md-6
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
+
 								form#editProfile.form-editProfile(action='/profile', method='POST')
-									.form-group
+									.form-group(style='display:none')
 										label(for='inputName')
 											| Name: 
-											span(style='font-weight: normal') #{user.fullName}
-										input#inputName.form-control(type='text', name='fullName', placeholder='Name', style='display:none')
-									.form-group
+										input#inputName.form-control(type='text', name='fullName', placeholder='Name')
+									.form-group(style='display:none')
 										label(for='inputEmail')
 											| Email: 
-											span(style='font-weight: normal')  #{user.email}
-										input#inputEmail.form-control(type='text', name='email', placeholder='Email', style='display:none')
-									.form-group
+										input#inputEmail.form-control(type='text', name='email', placeholder='Email')
+									.form-group(style='display:none')
 										label(for='inputInfo')
 											| Info: 
-											span(style='font-weight: normal') #{user.biography}
-										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio', style='display:none')
-										button.btn.btn-default(type='submit', style='display:none') Submit
-						#events
-							h1.text-left.login-title Events Created
-							ul
-								each event in profile.eventsCreated
-									li
-										a(href='/event?id='+event)= event
+										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio')
+										button.btn.btn-default(type='submit') Submit
+			
+					#events
+						h1.text-left.login-title Events Created
+						ul
+							each event in profile.eventsCreated
+								li
+									a(href='/event?id='+event._id)= event.title
