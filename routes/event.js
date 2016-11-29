@@ -18,9 +18,7 @@ module.exports.loadEvent = function(req, res) {
 
 module.exports.addAttendee = function(req, res) {
 	console.log("RSVP");
-	// User.findByIdAndUpdate(req.user.id, {
-	// 	events.
-	// });
+
 	Event.findByIdAndUpdate(req.body.id, {
 		"$push": {
 			attendees : req.user
@@ -29,7 +27,6 @@ module.exports.addAttendee = function(req, res) {
 		if (err) throw err;
 		event.save(function(err) {
 			if (err) throw err;
-				//{	console.log("save " + err)};
 			console.log("Event updated");
 		})
 
@@ -39,15 +36,10 @@ module.exports.addAttendee = function(req, res) {
 			}
 		}, function(err){
 			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
-		User.findByIdAndUpdate(req.user.id, {
-			"$push" : {
-				eventsGoing : event
-				}
-			});
-			console.log(req.user.id);
-			console.log(event);
-			if (err) throw err;
-			res.render("event", { event: event, user: req.user });
+				console.log(req.user.id);
+				console.log(event);
+				if (err) throw err;
+				res.render("event", { event: event, user: req.user });
 			});
 		});
 	});
