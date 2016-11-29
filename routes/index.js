@@ -81,6 +81,8 @@ module.exports = function(passport){
 		res.redirect('/');
 	});
 
+	router.post('/rsvp', isAuthenticated, event.addAttendee);
+
 	return router;
 }
 

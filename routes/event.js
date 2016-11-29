@@ -10,10 +10,46 @@ module.exports.loadEvent = function(req, res) {
 	console.log("Load event");
 	console.log(req.query);
 
-	Event.findOne({_id: req.query.id}).populate('createdBy fullName _id').exec(function(err, event) {
+	Event.findOne({_id: req.query.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event) {
 		if (err) throw err;
 		res.render('event', { event: event, user: req.user });
-		//console.log('created by: ' + event.createdBy._id);
+	});
+}
+
+module.exports.addAttendee = function(req, res) {
+	console.log("RSVP");
+	// User.findByIdAndUpdate(req.user.id, {
+	// 	events.
+	// });
+	Event.findByIdAndUpdate(req.body.id, {
+		"$push": {
+			attendees : req.user
+		}
+	}, function(err, event){
+		if (err) throw err;
+		event.save(function(err) {
+			if (err) throw err;
+				//{	console.log("save " + err)};
+			console.log("Event updated");
+		})
+
+		User.findByIdAndUpdate(req.user.id, {
+			"$push" : {
+				eventsGoing : event
+			}
+		}, function(err){
+			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
+		User.findByIdAndUpdate(req.user.id, {
+			"$push" : {
+				eventsGoing : event
+				}
+			});
+			console.log(req.user.id);
+			console.log(event);
+			if (err) throw err;
+			res.render("event", { event: event, user: req.user });
+			});
+		});
 	});
 }
 
@@ -66,7 +102,7 @@ module.exports.updateEvent = function(req, res) {
 				console.log("Event updated");
 			})
 
-			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id').exec(function(err, event){
+			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
 				if (err) throw err;
 					//{console.log(err)};
 				res.status(200);

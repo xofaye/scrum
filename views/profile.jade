@@ -50,3 +50,8 @@ block content
 							each event in profile.eventsCreated
 								li
 									a(href='/event?id='+event._id)= event.title
+						h1.text-left.login-title Events Going
+						ul
+							each event in profile.eventsGoing
+								li
+									a(href='/event?id='+event._id)= event.title
