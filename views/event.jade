@@ -41,9 +41,13 @@ block content
               h1.text-left.attendee-title Attendees
               form#editEvent(action='/rsvp', method='POST')
                 input( name='id', value=event._id, style='display:none')
-                button(id='rsvp', class='btn btn-default pull-right', type='submit') RSVP
+                button(id='rsvp', class='btn btn-default pull-right', type='submit') 
+                  if (event.attendees.indexOf(user._id) === -1)
+                    |RSVP
+                  else 
+                    |Can't Go
               each attendee in event.attendees 
-                li #{attendee}
+                li #[a(href='/profile?id='+attendee)= attendee]
             #comments
               h1.text-left.comments-title Comments
               div.comments-section

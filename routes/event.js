@@ -20,7 +20,7 @@ module.exports.addAttendee = function(req, res) {
 	console.log("RSVP");
 
 	Event.findByIdAndUpdate(req.body.id, {
-		"$push": {
+		"$addToSet": {
 			attendees : req.user
 		}
 	}, function(err, event){
@@ -31,7 +31,7 @@ module.exports.addAttendee = function(req, res) {
 		})
 
 		User.findByIdAndUpdate(req.user.id, {
-			"$push" : {
+			"$addToSet" : {
 				eventsGoing : event
 			}
 		}, function(err){
@@ -40,6 +40,7 @@ module.exports.addAttendee = function(req, res) {
 				console.log(event);
 				if (err) throw err;
 				res.render("event", { event: event, user: req.user });
+			
 			});
 		});
 	});
