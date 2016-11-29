@@ -9,7 +9,7 @@ module.exports.findEvents = function(req, res) {
 	console.log(req.query);
 	context = {};
 	var startdate = new Date; 
-	var enddate = new Date("December 31, 2040 12:00:00");
+	var enddate = new Date("December 31, 2099 12:00:00");
 	
 	if (req.query.type) {
 		context["type"] = req.query.type;

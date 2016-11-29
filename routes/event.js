@@ -46,6 +46,36 @@ module.exports.addAttendee = function(req, res) {
 	});
 }
 
+module.exports.removeAttendee = function(req, res) {
+	console.log("RSVP");
+
+	Event.findByIdAndUpdate(req.body.id, {
+		"$pull": {
+			attendees : { $in: [ req.user ] }
+		}
+	}, function(err, event){
+		if (err) throw err;
+		event.save(function(err) {
+			if (err) throw err;
+			console.log("Attendee removed");
+		})
+
+		User.findByIdAndUpdate(req.user.id, {
+			"$pull" : {
+				eventsGoing : { $in: [ event ] }
+			}
+		}, function(err){
+			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
+				console.log(req.user.id);
+				console.log(event);
+				if (err) throw err;
+				res.render("event", { event: event, user: req.user });
+			
+			});
+		});
+	});
+}
+
 module.exports.updateEvent = function(req, res) {
 	//e = req.body.id;
 	// console.log(new ObjectId(e));
