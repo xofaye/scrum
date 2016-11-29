@@ -28,46 +28,52 @@ module.exports.updateEvent = function(req, res) {
 	var newDate = req.body.date;
 
 	Event.findOne({_id:req.body.id}, function(err, event) {
-		if (err) throw err;
+		if (err) throw err 
+			//{console.log("find one " + err)};
 		console.log("original event:" + event.title);
-		console.log("original event:" + event.id);
+		console.log("original event:" + event.date);
 
 		if(newTitle === "") {
 			newTitle = event.title;
 		}
 
 		if (newLoc === "") {
+			console.log("empty location");
 			newLoc = event.location;
 		}
 
 		if( newDate === "") {
+			console.log("empty date");
 			newDate = event.date;
 		}
-	});
 
-	Event.findByIdAndUpdate(req.body.id, {
-		"$set": {
-				'title': newTitle,
-				'location': newLoc,
-				'date': newDate,
-				'type': newType,
-				'description': newDesc,
-				'numRequired': newNum
-			}
-		}, {new:true}, function(err, event){
-		if (err) throw err;
-		event.save(function(err) {
+
+		Event.findByIdAndUpdate(req.body.id, {
+			"$set": {
+					'title': newTitle,
+					'location': newLoc,
+					'date': newDate,
+					'type': newType,
+					'description': newDesc,
+					'numRequired': newNum
+				}
+			}, {new:true}, function(err, event){
 			if (err) throw err;
-			console.log("Event updated");
-		})
-	});
+				//{console.log("findByIdAndUpdate " + err)};
+			event.save(function(err) {
+				if (err) throw err;
+					//{	console.log("save " + err)};
+				console.log("Event updated");
+			})
 
-	Event.findOne({_id:req.body.id}).populate('createdBy fullName _id').exec(function(err, event){
-			if (err) throw err;
-		res.status(200);
-		res.render("event", { event: event, user: req.user } );
-
+			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id').exec(function(err, event){
+				if (err) throw err;
+					//{console.log(err)};
+				res.status(200);
+				res.render("event", { event: event, user: req.user } );
+			});
 		});
+	});
 
 		// res.status(200);
 		// res.render("event", { event: event, user: req.user } );
