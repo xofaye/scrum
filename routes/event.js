@@ -28,8 +28,8 @@ module.exports.updateEvent = function(req, res) {
 	var newDate = req.body.date;
 
 	Event.findOne({_id:req.body.id}, function(err, event) {
-		if (err){
-			console.log("find one " + err)};
+		if (err) throw err 
+			//{console.log("find one " + err)};
 		console.log("original event:" + event.title);
 		console.log("original event:" + event.date);
 
@@ -58,22 +58,21 @@ module.exports.updateEvent = function(req, res) {
 					'numRequired': newNum
 				}
 			}, {new:true}, function(err, event){
-			if (err) {
-			console.log("findByIdAndUpdate " + err)};
+			if (err) throw err;
+				//{console.log("findByIdAndUpdate " + err)};
 			event.save(function(err) {
-				if (err) {
-			console.log("save " + err)};
+				if (err) throw err;
+					//{	console.log("save " + err)};
 				console.log("Event updated");
 			})
-		});
 
-		Event.findOne({_id:req.body.id}).populate('createdBy fullName _id').exec(function(err, event){
-				if (err) {
-			console.log(err)};
-			res.status(200);
-			res.render("event", { event: event, user: req.user } );
-
+			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id').exec(function(err, event){
+				if (err) throw err;
+					//{console.log(err)};
+				res.status(200);
+				res.render("event", { event: event, user: req.user } );
 			});
+		});
 	});
 
 		// res.status(200);
