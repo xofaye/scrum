@@ -21,7 +21,7 @@ module.exports.findEvents = function(req, res) {
 		enddate = req.query.enddate;
 	}	
 	context["date"] =  {  $lte: enddate, $gte: startdate };
-	Event.find(context, function(err, events) {
+	Event.find(context).populate('createdBy fullName _id').exec(function(err, events) {
 		if (err) throw err;
 		res.render('search', { events : events, user : req.user });
 	});
