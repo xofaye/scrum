@@ -23,7 +23,7 @@ block content
       
       for event in events
         #event
-          h1.text-left.event-title #{event.title}
+          h1.text-left.event-title #[a(href='/event?id='+event.id)= event.title]
             div.event-wall
               div.event-info
                 ul.event-details
