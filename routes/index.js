@@ -81,8 +81,11 @@ module.exports = function(passport){
 		res.redirect('/');
 	});
 
+	/* Event RSVP */
 	router.post('/attend', isAuthenticated, event.addAttendee);
 	router.post('/decline', isAuthenticated, event.removeAttendee);
+	/* Event comment */
+	router.post('/addComment', isAuthenticated, event.addComment);
 
 	return router;
 }

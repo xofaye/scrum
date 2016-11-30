@@ -2,7 +2,28 @@ var express = require('express');
 var router = express.Router();
 var Event = require('../models/schema/event');
 var User = require('../models/schema/user');
+var Comment = require('../models/schema/comment');
 var ObjectId = require('mongoose').Types.ObjectId;
+
+var opts = [
+	{
+		path: 'comments',
+		model: 'Comment',
+		populate: {
+			path: 'user',
+			model: 'User',
+			select: ('_id', 'fullName')
+		}
+	},
+	{
+		path: 'attendees',
+		select: ('_id', 'fullName')
+	},
+	{
+		path: 'createdBy',
+		select: ('_id', 'fullName')
+	}
+];
 
 module.exports = router;
 
@@ -10,7 +31,7 @@ module.exports.loadEvent = function(req, res) {
 	console.log("Load event");
 	console.log(req.query);
 
-	Event.findOne({_id: req.query.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event) {
+	Event.findOne({_id: req.query.id}).populate(opts).exec(function(err, event) {
 		if (err) throw err;
 		res.render('event', { event: event, user: req.user });
 	});
@@ -35,7 +56,7 @@ module.exports.addAttendee = function(req, res) {
 				eventsGoing : event
 			}
 		}, function(err){
-			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
+			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
 				console.log(req.user.id);
 				console.log(event);
 				if (err) throw err;
@@ -65,7 +86,7 @@ module.exports.removeAttendee = function(req, res) {
 				eventsGoing : { $in: [ event ] }
 			}
 		}, function(err){
-			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
+			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
 				console.log(req.user.id);
 				console.log(event);
 				if (err) throw err;
@@ -74,6 +95,34 @@ module.exports.removeAttendee = function(req, res) {
 			});
 		});
 	});
+}
+
+module.exports.addComment = function(req, res) {
+	console.log("Comment");
+
+	var comment = new Comment();
+	comment.user = req.user._id;
+	comment.event = req.body.id;
+	comment.date = new Date();
+	comment.text = req.body.text;
+
+	comment.save(function(err, comment) {
+		if (err) throw err;
+		// Add comment to Event
+		Event.findByIdAndUpdate(req.body.id, {
+			"$addToSet" : {
+				comments : comment
+			}
+		}, function(err){
+			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
+				console.log(req.user.id);
+				console.log(event);
+				if (err) throw err;
+				res.render("event", { event: event, user: req.user });
+			});
+		});
+	});
+
 }
 
 module.exports.updateEvent = function(req, res) {
@@ -125,7 +174,7 @@ module.exports.updateEvent = function(req, res) {
 				console.log("Event updated");
 			})
 
-			Event.findOne({_id:req.body.id}).populate('createdBy fullName _id', 'attendees fullName _id').exec(function(err, event){
+			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
 				if (err) throw err;
 					//{console.log(err)};
 				res.status(200);
