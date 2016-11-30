@@ -27,9 +27,10 @@ block content
 								li.user-details Biography: #{profile.biography}
 						if ( user.id === profile.id || user.role === "ADMIN" )
 							div.edit-profile.col-md-6
-								a.btn.btn-default.pull-right(role='button') Delete
+								form#editProfile(action='/deleteUser', method='POST')
+									input(name='id', value=profile.id, style='display:none')
+									button(id='deleteUser', class='btn btn-default pull-right', type='submit') Delete
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
-
 								form#editProfile.form-editProfile(action='/profile?id=' + profile.id, method='POST' name='editProfile')
 									.form-group(style='display:none')
 										label(for='inputName')

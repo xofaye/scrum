@@ -113,5 +113,14 @@ module.exports.viewProfile = function(req, res) {
 		console.log(req.user);
 		res.render('profile', { "user": req.user, "profile": profile });
 	});
+}
+
+module.exports.delete = function(req, res) {
+	console.log(req.body.id);
+	User.remove({_id: req.body.id}, function(err) {
+		if (err) throw err;
+		console.log('User deleted');
+		res.redirect("/");
+	});
 
 }

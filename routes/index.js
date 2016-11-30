@@ -89,6 +89,9 @@ module.exports = function(passport){
 
 	/* Event delete*/ 
 	router.post('/delete', isAuthenticated, event.delete);
+
+	/* User delete*/
+	router.post('/deleteUser', isAuthenticated, users.delete);
 	
 	return router;
 }
