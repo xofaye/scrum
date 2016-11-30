@@ -97,6 +97,14 @@ module.exports.removeAttendee = function(req, res) {
 	});
 }
 
+module.exports.delete = function(req, res) { 
+	console.log("DELETE EVENT");
+
+	Event.remove({_id:req.body.id}, function(err, event){
+		res.redirect("/home");
+	});
+}
+
 module.exports.addComment = function(req, res) {
 	console.log("Comment");
 
