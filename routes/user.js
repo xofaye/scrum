@@ -11,8 +11,6 @@ module.exports.updateProfile = function(req, res) {
 	//var u = req.user;
 	console.log("user profile: " + req.query.id);
 	console.log("editing profile: " + req.user._id);
-	//console.log("query length: " + Object.keys(req.params).length);
-	//console.log("url" + req.originalUrl);
 	
 	//console.log(u._id);
 	//console.log(u.fullName);

@@ -27,6 +27,7 @@ block content
 								li.user-details Biography: #{profile.biography}
 						if ( user.id === profile.id || user.role === "ADMIN" )
 							div.edit-profile.col-md-6
+								a.btn.btn-default.pull-right(role='button') Delete
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
 
 								form#editProfile.form-editProfile(action='/profile?id=' + profile.id, method='POST' name='editProfile')
