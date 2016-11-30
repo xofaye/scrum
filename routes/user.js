@@ -7,6 +7,17 @@ var createHash = function(password){
     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 };
 
+var opts = [
+	{
+		path: 'eventsCreated',
+		select: ('_id', 'title')
+	},
+	{
+		path: 'eventsGoing',
+		select: ('_id', 'title')
+	}
+];
+
 module.exports.updateProfile = function(req, res) {
 	//var u = req.user;
 	console.log("user profile: " + req.query.id);
@@ -90,7 +101,7 @@ module.exports.viewProfile = function(req, res) {
 	// 	console.log(e);
 	// })
 
-	User.findOne({_id: id}).populate('eventsCreated title', 'eventsGoing title').exec(function(err, profile) {
+	User.findOne({_id: id}).populate(opts).exec(function(err, profile) {
 		if (err) throw err;
 		// var e = []
 		// for (var i=0; i< req.user.eventsCreated.length; i++) {

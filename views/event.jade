@@ -29,7 +29,6 @@ block content
                   p #{event.description}
               if (user._id.equals(event.createdBy._id) || user.role === "ADMIN")
                 div.edit-event.col-md-6
-                  a.btn.btn-default.pull-right(onclick='#', role='button') Delete
                   a.btn.btn-default.pull-right(onclick='showForm()', role='button') Edit
                   form#editEvent(action='/event', method='POST', style='display: none')
                     input( name='id', value=event._id, style='display:none')
@@ -45,6 +44,9 @@ block content
                     textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
                     input(type='number', name='numRequired', class='form-control', placeholder='Number of Players')
                     button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
+                  form#editEvent(action='/delete', method='POST')
+                    input(name='id', value=event._id, style='display:none')
+                    button(id='deleteEvent', class='btn btn-default pull-right', type='submit') Delete
             #attendees 
               h1.text-left.attendee-title Attendees
               -match = -1
