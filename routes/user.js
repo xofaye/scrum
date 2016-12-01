@@ -2,6 +2,7 @@ var User = require('../models/schema/user');
 var bCrypt = require('bcrypt-nodejs');
 //var ObjectId = require('mongoose').Types.ObjectId;
 var Event = require('../models/schema/event');
+//var SweetAlert = require('sweetalert');
 
 var createHash = function(password){
     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
@@ -22,7 +23,7 @@ module.exports.updateProfile = function(req, res) {
 	//var u = req.user;
 	console.log("user profile: " + req.query.id);
 	console.log("editing profile: " + req.user._id);
-	
+	//swal("Oops!", "Something went wrong on the page!", "error")
 	//console.log(u._id);
 	//console.log(u.fullName);
 
@@ -70,10 +71,12 @@ module.exports.updateProfile = function(req, res) {
 			})
 			if (req.user._id.equals(req.query.id)) {
 				console.log('same user');
-				res.redirect("/profile");
+				res.send("/profile");
+				//res.redirect("/profile");
 
 			} else {
-				res.redirect("/profile?id=" + req.query.id);
+				res.send("/profile?id=" + req.query.id);
+				//res.redirect("/profile?id=" + req.query.id);
 			}
 		});
 	});
