@@ -68,9 +68,9 @@ block content
                 ul
                   each comment in event.comments
                     li.comment-user
-                    if comment-user === null
-                      |
-                      i deleted user
+                    if comment.user === null
+                      | deleted user
+                      p.text-left.comment-text #{comment.text}
                     else
                       |#[a(href='/profile?id='+comment.user._id)=comment.user.fullName]
                       p.text-left.comment-text #{comment.text}
