@@ -1,4 +1,4 @@
-# CSC309 Project (*app to be named*)
+# Scrum
 
 ## Running the application
 
