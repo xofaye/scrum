@@ -9,6 +9,7 @@ block content
   h1 Dashboard 
 
   div.container-fluid
+      a(href='/#', class='pull-right') Search for User
       form(class='form-event', method='GET')
                 select(name='type', class='form-control', placeholder='Activity', autofocus)
                   each item in sportsEnum
@@ -23,10 +24,11 @@ block content
       h1 Upcoming Events
       for event in events
         #event
-          h1.text-left.event-title #[a(href='/event?id='+event.id)= event.title]
+          
             div.event-wall
               div.event-info
-                ul.event-details
+                ul.event-details                
+                  h3 #[a(href='/event?id='+event.id)= event.title]
                   li
                     if event.createdBy === null
                       |Organizer: [deleted]
