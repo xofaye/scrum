@@ -6,17 +6,12 @@ block content
     "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
     "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
 
-  script.
-    $(function() {
-      $('#datetimepicker1').datetimepicker();
-    });
-    
   div.container-fluid
       div.col-sm-6.col-md-8
         #eventfields
           h1.text-left.event-title Create an Event
             div.createvent-wall
-              form(class='form-event', method='POST')
+              form#createEvent(class='form-event', method='POST')
                 input(type='text', name='title', class='form-control', placeholder='Title',required, autofocus)
                 input(type='text', name='location', class='form-control', placeholder='Location',required, autofocus)
                 #datetimepicker1.input-group.date

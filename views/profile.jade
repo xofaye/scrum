@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
 	div.container-fluid
 		div.row
 			div.col-sm-3.col-md-2.sidebar
@@ -28,7 +29,7 @@ block content
 							div.edit-profile.col-md-6
 								form#editProfile(action='/deleteUser', method='POST')
 									input(name='id', value=profile.id, style='display:none')
-									button(id='deleteUser', class='btn btn-default pull-right', type='submit') Delete
+									button(id='deleteUser', class='btn btn-default pull-right delete-account', type='submit') Delete
 								a.btn.btn-default.pull-right(onclick='showFormInput()', role='button') Edit Profile
 								form#editProfile.form-editProfile(action='/profile?id=' + profile.id, method='POST' name='editProfile')
 									.form-group(style='display:none')

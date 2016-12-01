@@ -20,7 +20,8 @@ module.exports.addEvent = function(req, res) {
 			user.eventsCreated.push(newEvent._id);
 			user.save(function(err, user) {
 				if (err) throw err;
-				res.redirect('/event?id=' + newEvent._id);
+				res.send(newEvent._id);
+				//res.redirect('/event?id=' + newEvent._id);
 				//res.render('event', { event: newEvent, user : user });
 			});
 		});

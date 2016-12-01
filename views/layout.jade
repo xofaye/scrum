@@ -4,24 +4,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/sweetalert.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js')
     script(src='/js/jquery.js')
+    script(src='/js/scripts.js')
     script(src='/js/bootstrap.min.js')
+    script(src='/js/sweetalert.min.js')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js")
 
-  script.
-    var showFormInput = function() {
-      var form = document.getElementsByClassName("form-group");
-        for (var i=0; i<form.length; i++){
-          form[i].style.display = "block";
-        }
-    }
-
-    var showForm = function() {
-     var form = document.getElementById("editEvent");
-     form.style.display = "block";
-    }
-    
   body
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
