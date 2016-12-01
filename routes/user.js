@@ -119,27 +119,27 @@ module.exports.delete = function(req, res) {
 	console.log(req.body.id);
 	console.log(req.user);
 	//remove events created by User
-	User.findOne({_id : req.body.id}, function(err, user) {
-		if (err) throw err;
-		for (var i=0; i<user.eventsCreated.length; i++) {
-			console.log(user.eventsCreated[i]);
-			//un-RSVP users in event
-			User.update({}, {
-				"$pull" :{
-					eventsGoing : { $in: [ user.eventsCreated[i] ]}
-				}
-			}, function(err) {
-				if (err) throw err;
-			});
-			//Remove Event
-			Event.remove({_id: user.eventsCreated[i]}, function(err) {
-				if (err) throw err;
-			});
-		}
+	// User.findOne({_id : req.body.id}, function(err, user) {
+	// 	if (err) throw err;
+	// 	for (var i=0; i<user.eventsCreated.length; i++) {
+	// 		console.log(user.eventsCreated[i]);
+	// 		//un-RSVP users in event
+	// 		User.update({}, {
+	// 			"$pull" :{
+	// 				eventsGoing : { $in: [ user.eventsCreated[i] ]}
+	// 			}
+	// 		}, function(err) {
+	// 			if (err) throw err;
+	// 		});
+	// 		//Remove Event
+	// 		Event.remove({_id: user.eventsCreated[i]}, function(err) {
+	// 			if (err) throw err;
+	// 		});
+	// 	}
 		User.remove({_id: req.body.id}, function(err) {
 			if (err) throw err;
 			console.log('User deleted');
 			res.redirect("/home");
 		});
-	});
+	// });
 }

@@ -27,8 +27,11 @@ block content
             div.event-wall
               div.event-info
                 ul.event-details
-                  li 
-                    |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
+                  li
+                    if event.createdBy === null
+                      |Organizer: [deleted]
+                    else
+                      |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
