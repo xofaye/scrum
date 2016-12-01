@@ -1,10 +1,15 @@
 extends layout
 
+link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css")
+link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css")
+script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js")
+
 block content
   -
     sportsEnum = ["BADMINTON", "BASKETBALL", "BOWLING", "CRICKET", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
     "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
     "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
+
 
   div.container-fluid
       div.col-sm-6.col-md-8
@@ -14,7 +19,10 @@ block content
               div.event-info.col-md-6
                 ul.event-details
                   li 
-                    |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
+                    if event.createdBy === null
+                      |Organizer: [deleted]
+                    else
+                      |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
@@ -22,14 +30,17 @@ block content
                 hr(style="margin-left:20px;")
                 div.event-description
                   p #{event.description}
-              if (user._id.equals(event.createdBy._id) || user.role === "ADMIN")
+              if (event.createdBy !== null && user._id.equals(event.createdBy._id) || user.role === "ADMIN")
                 div.edit-event.col-md-6
                   a.btn.btn-default.pull-right(onclick='showForm()', role='button') Edit
                   form#editEvent(action='/event', method='POST', style='display: none')
                     input( name='id', value=event._id, style='display:none')
                     input(type='text', name='title', class='form-control', placeholder='Title')
                     input(type='text', name='location', class='form-control', placeholder='Location')
-                    input(type='datetime-local', name='date', class='form-control', placeholder='Date & Time')
+                    .input-group.date(data-provide='datepicker')
+                      input(type='datetime-local', name='date', class='form-control', placeholder='Date and Time')
+                      span.input-group-addon
+                        span.glyphicon.glyphicon-calendar
                     select(name='type', class='form-control', placeholder='Activity')
                       each item in sportsEnum
                         option= item
