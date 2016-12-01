@@ -12,7 +12,7 @@ var isAuthenticated = function (req, res, next) {
 	// request and response objects
 	if (req.isAuthenticated())
 		return next();
-	// if the user is not authenticated then redirect him to the login page
+	// if the user is not authenticated then redirect them to the login page
 	res.redirect('/login');
 }
 
@@ -74,6 +74,9 @@ module.exports = function(passport){
 
 	/* GET Search Event */
 	router.get('/home', isAuthenticated, searchEvent.findEvents);
+	// 	, function(req, res) {
+	// 	res.render('home', {message: req.flash('message')});
+	// });
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {

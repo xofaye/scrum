@@ -23,7 +23,6 @@ block content
 							ul.user-details
 								li.user-details Name: #{profile.fullName}
 								li.user-details Email: #{profile.email}
-								li.user-details Info: #{profile.info}
 								li.user-details Biography: #{profile.biography}
 						if ( user.id === profile.id || user.role === "ADMIN" )
 							div.edit-profile.col-md-6
@@ -46,7 +45,7 @@ block content
 										input#inputPassword.form-control(type='password', name='password', placeholder='Password')
 									.form-group(style='display:none')
 										label(for='inputInfo')
-											| Info: 
+											| Biography: 
 										textarea#inputInfo.form-control(rows='4', name='bio', placeholder='Bio')
 										button.btn.btn-default(type='submit') Submit
 			

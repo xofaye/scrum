@@ -16,13 +16,6 @@ html
      var form = document.getElementById("editEvent");
      form.style.display = "block";
     }
-
-    var deleteUser = function(userId) {
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open( "DELETE", '/profile>id='+ userId, false );
-      xmlHttp.send( null );
-      return xmlHttp.responseText;
-    }
     
   body
     nav.navbar.navbar-inverse.navbar-fixed-top
