@@ -1,15 +1,10 @@
 extends layout
 
-link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css")
-link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css")
-script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js")
-
 block content
   -
     sportsEnum = ["BADMINTON", "BASKETBALL", "BOWLING", "CRICKET", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
     "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
     "TENNIS", "TRACK MEET", "ULTIMATE FRISBEE", "VOLLEYBALL", "WATER POLO"]
-
 
   div.container-fluid
       div.col-sm-6.col-md-8
@@ -20,7 +15,8 @@ block content
                 ul.event-details
                   li 
                     if event.createdBy === null
-                      |Organizer: [deleted]
+                      |Organizer: 
+                      i deleted user
                     else
                       |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
                   li Date: #{event.date}
@@ -37,7 +33,7 @@ block content
                     input( name='id', value=event._id, style='display:none')
                     input(type='text', name='title', class='form-control', placeholder='Title')
                     input(type='text', name='location', class='form-control', placeholder='Location')
-                    .input-group.date(data-provide='datepicker')
+                    #datetimepicker1.input-group.date
                       input(type='datetime-local', name='date', class='form-control', placeholder='Date and Time')
                       span.input-group-addon
                         span.glyphicon.glyphicon-calendar
@@ -60,18 +56,23 @@ block content
               if (match === -1)
                 form#editEvent(action='/attend', method='POST')
                   input( name='id', value=event._id, style='display:none')
-                  button(id='rsvp', class='btn btn-default pull-right', type='submit') RSVP
+                  button(id='rsvp', class='btn btn-default pull-right rsvp', type='submit') RSVP
               else 
                 form#editEvent(action='/decline', method='POST')
                   input( name='id', value=event._id, style='display:none')
-                  button(id='rsvp', class='btn btn-default pull-right', type='submit') Can't Go
+                  button(id='rsvp', class='btn btn-default pull-right unrsvp', type='submit') Can't Go
               each attendee in event.attendees 
                 li.attendee #[a(href='/profile?id='+attendee._id)= attendee.fullName]
             #comments
               div.comments-section
                 ul
                   each comment in event.comments
-                    li.comment-user #[a(href='/profile?id='+comment.user._id)= comment.user.fullName]
+                    li.comment-user
+                    if comment.user === null
+                      | deleted user
+                      p.text-left.comment-text #{comment.text}
+                    else
+                      |#[a(href='/profile?id='+comment.user._id)=comment.user.fullName]
                       p.text-left.comment-text #{comment.text}
                     hr(style="margin-right:50px;")
                 div.comment-input-section
