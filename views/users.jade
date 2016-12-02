@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Search Users
+
+  div.container-fluid
+      form(class='form-event', method='GET')                
+                input(type='text', name='fullName', class='form-control', placeholder='Name', autofocus)
+                input(type='text', name='email', class='form-control', placeholder='Email', autofocus)
+                button(class='btn btn-lg btn-primary btn-block', type='submit') Search
+                span.clearfix
+
+      div.col-sm-6.col-md-8
+      h1 Search Results
+      for result in results
+        #event
+            div.event-wall
+              div.event-info
+                ul.event-details       
+                  h3 #[a(href='/profile?id='+result._id)=result.fullName]         
+                  |Email: #{result.email}
+                hr(style="margin-left:20px;")
+

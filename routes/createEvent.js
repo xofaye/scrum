@@ -11,6 +11,7 @@ module.exports.addEvent = function(req, res) {
 	var newEvent = new Event(req.body);
 	newEvent.date = new Date(req.body.date);
 	newEvent.createdBy = req.user._id;
+	newEvent.attendees = [req.user._id];
 	// Add new event to db
 	newEvent.save(function(err, newEvent) {
 		if (err) throw err;

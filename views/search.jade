@@ -9,7 +9,7 @@ block content
   h1 Dashboard 
 
   div.container-fluid
-      a(href='/#', class='pull-right') Search for User
+      a(href='/users', class='pull-right') Search for User
       form(class='form-event', method='GET')
                 select(name='type', class='form-control', placeholder='Activity', autofocus)
                   each item in sportsEnum
@@ -24,7 +24,6 @@ block content
       h1 Upcoming Events
       for event in events
         #event
-          
             div.event-wall
               div.event-info
                 ul.event-details                
