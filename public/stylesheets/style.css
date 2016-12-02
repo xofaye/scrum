@@ -2,7 +2,7 @@ body {
   padding: 70px;
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   font-family: 'PT Sans', 'Helvetica Neue', Helvetica, Arial, Sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 /*
 nav {
@@ -14,13 +14,13 @@ a {
 }
 
 .form-editProfile{
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'PT Sans', 'Helvetica Neue', Helvetica, Arial, Sans-serif;
     padding: 20px;
 }
 
 
 .account-info {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'PT Sans', 'Helvetica Neue', Helvetica, Arial, Sans-serif;
     padding: 20px;
 
 }
@@ -113,10 +113,15 @@ li.user-details{
     margin-bottom: 20px;
 }
 
+li.attendee{
+    font-weight: normal;
+    font-size: 18px;
+}
+
 /*View Event*/
 .event-title{
     color: #555;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 400;
     display: block;
 }
@@ -144,11 +149,12 @@ ul.event-details{
 
 /*Event attendees*/
 .attendee{
-    list-style: none;
+    list-style: circle;
 }
 
 /*Event Comments*/
 .comment-user{
+    font-size: 18px;
     list-style: none;
 }
 .comment-text{
@@ -166,6 +172,15 @@ ul.event-details{
 .comments-section{
     margin-top: 20px;
     padding: 40px 0px 40px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.attendee-section{
+    margin-top: 20px;
+    padding: 40px;
     background-color: #f7f7f7;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);

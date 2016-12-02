@@ -9,7 +9,7 @@ block content
   div.container-fluid
       div.col-sm-6.col-md-8
         #event
-          h1.text-left.event-title #{event.title}
+          h1.text-left #{event.title}
             div.event-wall.container-fluid
               div.event-info.col-md-6
                 ul.event-details
@@ -47,36 +47,39 @@ block content
                     input(name='id', value=event._id, style='display:none')
                     button(id='deleteEvent', class='btn btn-default pull-right', type='submit') Delete
             #attendees 
-              h1.text-left.attendee-title Attendees
-              -match = -1
-              each attendee in event.attendees
-                if (attendee._id.toString() === user._id.toString())
-                  -match = 0
-                  -break
-              if (match === -1)
-                form#editEvent(action='/attend', method='POST')
-                  input( name='id', value=event._id, style='display:none')
-                  button(id='rsvp', class='btn btn-default pull-right rsvp', type='submit') RSVP
-              else 
-                form#editEvent(action='/decline', method='POST')
-                  input( name='id', value=event._id, style='display:none')
-                  button(id='rsvp', class='btn btn-default pull-right unrsvp', type='submit') Can't Go
-              each attendee in event.attendees 
-                li.attendee #[a(href='/profile?id='+attendee._id)= attendee.fullName]
+              h2.text-left.attendee-title Attendees
+                div.attendee-section
+                  -match = -1
+                  each attendee in event.attendees
+                    if (attendee._id.toString() === user._id.toString())
+                      -match = 0
+                      -break
+                  if (match === -1)
+                    form#editEvent(action='/attend', method='POST')
+                      input( name='id', value=event._id, style='display:none')
+                      button(id='rsvp', class='btn btn-default pull-right rsvp', type='submit') RSVP
+                  else 
+                    form#editEvent(action='/decline', method='POST')
+                      input( name='id', value=event._id, style='display:none')
+                      button(id='rsvp', class='btn btn-default pull-right unrsvp', type='submit') Can't Go
+                  ul.attendee
+                    each attendee in event.attendees 
+                      li.attendee #[a(href='/profile?id='+attendee._id)= attendee.fullName]
             #comments
-              div.comments-section
-                ul
-                  each comment in event.comments
-                    li.comment-user
-                    if comment.user === null
-                      | deleted user
-                      p.text-left.comment-text #{comment.text}
-                    else
-                      |#[a(href='/profile?id='+comment.user._id)=comment.user.fullName]
-                      p.text-left.comment-text #{comment.text}
-                    hr(style="margin-right:50px;")
-                div.comment-input-section
-                  form#comment(action='/addComment', method='POST')
-                    input(name='id', value=event._id, style='display:none')
-                    input(type='text', name='text', class='form-control comment-input', placeholder='Add a comment...', autocomplete='off')
-                    button(id='addComment' class='btn btn-default pull-right', type='submit') Comment
+              h2.text-left.comment-title Comments
+                div.comments-section
+                  ul
+                    each comment in event.comments
+                      li.comment-user
+                        if comment.user === null
+                          | [deleted user]
+                          p.text-left.comment-text #{comment.text}
+                        else
+                          |#[a(href='/profile?id='+comment.user._id)=comment.user.fullName]
+                          p.text-left.comment-text #{comment.text}
+                      hr(style="margin-right:50px;")
+                  div.comment-input-section
+                    form#comment(action='/addComment', method='POST')
+                      input(name='id', value=event._id, style='display:none')
+                      input(type='text', name='text', class='form-control comment-input', placeholder='Add a comment...', autocomplete='off')
+                      button(id='addComment' class='btn btn-default pull-right', type='submit') Comment
