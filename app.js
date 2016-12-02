@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var dbConfig = require('./db');
 var mongoose = require('mongoose');
 // Connect to DB
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds119618.mlab.com:19618/scrum-309');
+mongoose.connect(MONGOLAB_URI);
 
 var app = express();
 
