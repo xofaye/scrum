@@ -14,7 +14,7 @@ block content
                 select(name='type', class='form-control', placeholder='Activity', autofocus)
                   each item in sportsEnum
                     option= item
-                input(type='text', name='location', class='form-control', placeholder='Location', autofocus)
+                input#autocomplete(type='text', name='location', class='form-control', placeholder='Location', autofocus)
                 input(type='datetime-local', id = 'startdate', name='startdate', class='form-control', placeholder='Start Date', autofocus)
                 input(type='datetime-local', id = 'enddate', name='enddate', class='form-control', placeholder='End Date', autofocus)
                 button(class='btn btn-lg btn-primary btn-block', type='submit') Search
