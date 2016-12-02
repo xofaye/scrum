@@ -12,13 +12,16 @@ block content
 						h4 #{profile.fullName}
 					li.text-muted
 						p #{profile.role}
+					if (user.role === "ADMIN" && profile.role !== "ADMIN")
+						li.btn-group
+								a#promoAdmin.btn.btn-default.btn-sm(data-button= profile._id, role='button') Promote to Admin
 
 			div.col-sm-6.col-md-8
 				#profile
 					if user.id === profile.id
 						h1.text-left.login-title Hi #{profile.fullName}. Check your details below:
 					else
-						#{profile.fullName}
+						h1.text-left.login-title #{profile.fullName}
 					div.signup-wall.container-fluid
 						div.account-info.col-md-6
 							ul.user-details

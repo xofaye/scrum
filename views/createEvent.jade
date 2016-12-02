@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
   -
     sportsEnum = ["BADMINTON", "BASKETBALL", "BOWLING", "CRICKET", "EUROPEAN HANDBALL", "FIELD HOCKEY", "FLAG FOOTBALL",
     "HOCKEY", "LACROSSE", "RUGBY", "SOCCER", "SOFTBALL", "SQUASH", "TABLE TENNIS",
@@ -13,7 +14,8 @@ block content
             div.createvent-wall
               form#createEvent(class='form-event', method='POST')
                 input(type='text', name='title', class='form-control', placeholder='Title',required, autofocus)
-                input(type='text', name='location', class='form-control', placeholder='Location',required, autofocus)
+                div.locationField
+                  input#autocomplete(type='text', name='location', class='form-control controls', placeholder='Location', onFocus='geolocate()', required, autofocus)
                 #datetimepicker1.input-group.date
                   input(type='datetime-local', name='date', class='form-control', placeholder='Date and Time')
                   span.input-group-addon

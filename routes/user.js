@@ -146,3 +146,24 @@ module.exports.delete = function(req, res) {
 		});
 	// });
 }
+
+module.exports.promoteToAdmin = function(req, res) {
+	console.log(req.body.id);
+	var id = req.body.id
+	console.log(id.substring(1, id.length - 1));
+	id = id.substring(1, id.length - 1);
+	User.findByIdAndUpdate(id, {
+		//console.log("Found: " + user);
+		"$set":{
+			'role': 'ADMIN'
+		}
+	}, {new:true}, function(err, user) {
+		if (err) throw err;
+		user.save(function(err) {
+			if (err) throw err;
+			console.log("User successfully updated");
+		});
+		res.send("/profile?id=" + id);
+	})
+		//res.send(user);
+}
