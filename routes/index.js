@@ -52,7 +52,16 @@ module.exports = function(passport){
 
 
 	/* POST Edit User Profile*/
-	router.post('/profile', isAuthenticated, users.updateProfile);
+	router.post('/profile', isAuthenticated, function(req, res) {
+		console.log("post: " + req.body.fullName);
+		if (req.body.fullName !== undefined ) {
+			users.updateProfile(req, res);
+		}
+		else {
+			console.log(req.body);
+			users.promoteToAdmin(req, res);
+		}
+	});
 
 	/* GET Home Page */
 	// router.get('/home', isAuthenticated, function(req, res){
