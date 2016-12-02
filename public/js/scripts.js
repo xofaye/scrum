@@ -88,7 +88,10 @@ $(document).ready(function() {
 		initAutocomplete();
 	}
 
- 	$('#datetimepicker1').datetimepicker();
+ 	//$('#datetimepicker1').datetimepicker();
+ 	$('.datetimepicker').each(function(){
+    	$(this).datetimepicker();
+	});
 
  	$('#deleteEvent').on('click',function(e){
         e.preventDefault();
