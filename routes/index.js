@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var users = require('./user.js');
 var createEvent = require('./createEvent');
-var searchEvent = require('./searchEvent');
+var search = require('./search');
 var event = require('./event');
 var Event = require('../models/schema/event');
 
@@ -73,10 +73,10 @@ module.exports = function(passport){
 	router.post('/event', isAuthenticated, event.updateEvent);
 
 	/* GET Search Event */
-	router.get('/home', isAuthenticated, searchEvent.findEvents);
-	// 	, function(req, res) {
-	// 	res.render('home', {message: req.flash('message')});
-	// });
+	router.get('/home', isAuthenticated, search.findEvents);
+
+	/* GET Search Users */
+	router.get('/users', isAuthenticated, search.findUsers);
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
