@@ -13,8 +13,8 @@ block content
 							input(type='email', name='email', class='form-control', placeholder='Email',required, autofocus)
 							input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
 							input(type='text', name='name', class='form-control', placeholder='Name',required)
-							input(type='text', name='phone', class='form-control', placeholder='Phone #',required)
-							textarea(name='biography', rows='10', class='form-control', placeholder='Biography',required)
+							input(type='text', name='phone', class='form-control', placeholder='Phone #', pattern='[0-9]{10}', required)
+							textarea(name='biography', rows='10', class='form-control', placeholder='Tell us about yourself',required)
 							button(class='btn btn-lg btn-primary btn-block', type='submit') Register
 							span.clearfix
 					#message
