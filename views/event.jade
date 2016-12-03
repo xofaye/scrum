@@ -25,6 +25,7 @@ block content
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
+                  li Number of Players Going: #{event.attendees.length}
                   li Number of Players: #{event.numRequired}
                 hr(style="margin-left:20px;")
                 div.event-description
@@ -58,9 +59,10 @@ block content
                       -match = 0
                       -break
                   if (match === -1)
-                    form#editEvent(action='/attend', method='POST')
-                      input( name='id', value=event._id, style='display:none')
-                      button(id='rsvp', class='btn btn-default pull-right rsvp', type='submit') RSVP
+                    if (event.numRequired === null || event.numRequired !== null && event.attendees.length < event.numRequired)
+                      form#editEvent(action='/attend', method='POST')
+                        input( name='id', value=event._id, style='display:none')
+                        button(id='rsvp', class='btn btn-default pull-right rsvp', type='submit') RSVP
                   else 
                     form#editEvent(action='/decline', method='POST')
                       input( name='id', value=event._id, style='display:none')
