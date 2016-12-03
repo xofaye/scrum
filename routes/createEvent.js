@@ -8,6 +8,10 @@ module.exports = router;
 module.exports.addEvent = function(req, res) {
 	console.log("Add event");
 	console.log(req.body);
+	if(req.body.title === "" || req.body.date === "" || req.body.location === ""){
+		alert("You haven't filled out the required fields.");
+		return False; 
+	}
 	var newEvent = new Event(req.body);
 	newEvent.date = new Date(req.body.date);
 	newEvent.createdBy = req.user._id;
@@ -22,8 +26,6 @@ module.exports.addEvent = function(req, res) {
 			user.save(function(err, user) {
 				if (err) throw err;
 				res.send(newEvent._id);
-				//res.redirect('/event?id=' + newEvent._id);
-				//res.render('event', { event: newEvent, user : user });
 			});
 		});
 	})

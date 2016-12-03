@@ -183,6 +183,13 @@ $(document).ready(function() {
 				setTimeout(function() {
 					window.location = "/event?id=" + data;
 				}, 1000);
+    		},
+    		error: function(data) {
+				swal({
+					title:"You have not filled all the required fields",
+					type: "error",
+					showConfirmButton: true
+				});
     		}
     	})
     });
