@@ -25,8 +25,8 @@ block content
                   li Date: #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
-                  li Number of Players Going: #{event.attendees.length}
-                  li Number of Players: #{event.numRequired}
+                  li Number of Players RSVP'd: #{event.attendees.length}
+                  li Number of Players Required: #{event.numRequired}
                 hr(style="margin-left:20px;")
                 div.event-description
                   p #{event.description}
@@ -45,7 +45,7 @@ block content
                       each item in sportsEnum
                         option= item
                     textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
-                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players')
+                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players Required')
                     button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
                   form#editEvent(action='/delete', method='POST')
                     input(name='id', value=event._id, style='display:none')
