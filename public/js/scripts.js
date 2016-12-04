@@ -94,7 +94,8 @@ $(document).ready(function() {
 		var date = new Date($(this).text());
 		var hours = date.getHours();
 		if (hours > 12) {
-			var meridiem = "PM"
+			var meridiem = "PM"; 
+			hours -= 12;
 		} else {
 			var meridiem = "AM"
 			if (hours == 0){

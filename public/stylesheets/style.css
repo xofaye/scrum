@@ -154,7 +154,7 @@ ul.event-details{
 
 /*Event Comments*/
 .comment-user{
-    font-size: 16px;
+    font-size: 18px;
     list-style: none;
 }
 .comment-date{
@@ -164,7 +164,7 @@ ul.event-details{
 }
 .comment-text{
     color: #555;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     display: block;
 }
