@@ -93,9 +93,11 @@ $(document).ready(function() {
 	$('.dateText').each(function(){
 		var date = new Date($(this).text());
 		var hours = date.getHours();
-		if (hours > 12) {
+		if (hours >= 12) {
 			var meridiem = "PM"; 
-			hours -= 12;
+			if(hours > 12){
+				hours -= 12;
+			}
 		} else {
 			var meridiem = "AM"
 			if (hours == 0){
@@ -106,7 +108,8 @@ $(document).ready(function() {
 		if (minutes < 10){
 			minutes = "0"+minutes;
 		}
-		var dateString = date.getMonth()+"/"+date.getDate() +"/"
+		var month = date.getMonth() + 1; 
+		var dateString = month+"/"+date.getDate() +"/"
 		+ date.getFullYear()+" "+hours+":"+minutes+" "+meridiem;
 		$(this).text(dateString);
 	});
