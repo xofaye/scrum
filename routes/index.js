@@ -98,6 +98,7 @@ module.exports = function(passport){
 	router.post('/decline', isAuthenticated, event.removeAttendee);
 	/* Event comment */
 	router.post('/addComment', isAuthenticated, event.addComment);
+	router.post('/deleteComment', isAuthenticated, event.deleteComment);
 
 	/* Event delete*/ 
 	router.post('/delete', isAuthenticated, event.delete);

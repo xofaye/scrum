@@ -57,8 +57,6 @@ module.exports.addAttendee = function(req, res) {
 			}
 		}, function(err){
 			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
-				console.log(req.user.id);
-				console.log(event);
 				if (err) throw err;
 				res.render("event", { event: event, user: req.user });
 			
@@ -87,8 +85,6 @@ module.exports.removeAttendee = function(req, res) {
 			}
 		}, function(err){
 			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
-				console.log(req.user.id);
-				console.log(event);
 				if (err) throw err;
 				res.render("event", { event: event, user: req.user });
 			
@@ -123,14 +119,37 @@ module.exports.addComment = function(req, res) {
 			}
 		}, function(err){
 			Event.findOne({_id:req.body.id}).populate(opts).exec(function(err, event){
-				console.log(req.user.id);
-				console.log(event);
 				if (err) throw err;
 				res.render("event", { event: event, user: req.user });
 			});
 		});
 	});
 
+}
+
+module.exports.deleteComment = function(req, res) {
+	console.log("Delete comment");
+
+	Event.findByIdAndUpdate(req.body.event_id, {
+		"$pull": {
+			comments: { $in: [ req.body.comment_id ] }
+		}
+	}, function(err, event){
+		if (err) throw err;
+		event.save(function(err) {
+			if (err) throw err;
+			console.log("Comment removed from event");
+		})
+
+		Comment.remove({_id:req.body.comment_id}, function(err, comment){
+			if (err) throw err;
+			console.log("Comment deleted");
+			Event.findOne({_id:req.body.event_id}).populate(opts).exec(function(err, event){
+				if (err) throw err;
+				res.render("event", { event: event, user: req.user });
+			});
+		});
+	});
 }
 
 module.exports.updateEvent = function(req, res) {

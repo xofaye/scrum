@@ -20,6 +20,7 @@ var showForm = function() {
 		form[0].style.display = "none"
 	}
 }
+
 	// function initMap() {
  //    	var input = document.getElementById('searchInput');
  //    	var autocomplete = new google.maps.places.Autocomplete(input);
@@ -87,6 +88,27 @@ $(document).ready(function() {
 	if (document.getElementById('autocomplete') !== null) {
 		initAutocomplete();
 	}
+
+	// Format dates to MM/DD/YYYY HH:MM AM
+	$('.dateText').each(function(){
+		var date = new Date($(this).text());
+		var hours = date.getHours();
+		if (hours > 12) {
+			var meridiem = "PM"
+		} else {
+			var meridiem = "AM"
+			if (hours == 0){
+				hours = "12"
+			}
+		}
+		var minutes = date.getMinutes();
+		if (minutes < 10){
+			minutes = "0"+minutes;
+		}
+		var dateString = date.getMonth()+"/"+date.getDate() +"/"
+		+ date.getFullYear()+" "+hours+":"+minutes+" "+meridiem;
+		$(this).text(dateString);
+	});
 
  	//$('#datetimepicker1').datetimepicker();
  	$('.datetimepicker').each(function(){
@@ -165,6 +187,22 @@ $(document).ready(function() {
  			}  	
     	})
  	});
+
+    $('.delete-comment').on('click',function(e){
+    	e.preventDefault();
+    	var form = $(this).parents('form');
+    	var text = form.siblings('p').text();
+    	swal({
+    		title: "Delete this comment?",
+    		text: "\""+text+"\"",
+    		type: "warning",
+    		showCancelButton: true,
+    		confirmButtonText: "Yes, delete it!",
+    		closeOnConfirm: false
+    	}, function(confirmed){
+    		if (confirmed) form.submit();
+    	});
+    });
 
     $('#createEvent').submit(function(e) {
     	e.preventDefault();

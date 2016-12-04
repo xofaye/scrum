@@ -22,7 +22,8 @@ block content
                       i deleted user
                     else
                       |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
-                  li Date: #{event.date}
+                  li Date: 
+                    span.dateText #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
                   li Number of Players Going: #{event.attendees.length}
@@ -35,17 +36,17 @@ block content
                   a.btn.btn-default.pull-right(onclick='showForm()', role='button') Edit
                   form#editEvent(action='/event', method='POST', style='display: none')
                     input( name='id', value=event._id, style='display:none')
-                    input(type='text', name='title', class='form-control', placeholder='Title')
-                    input(type='text', name='location', class='form-control', placeholder='Location')
+                    input(type='text', name='title', class='form-control', placeholder='Title', value='#{event.title}')
+                    input(type='text', name='location', class='form-control', placeholder='Location', value='#{event.location}')
                     div.datetimepicker.input-group.date
-                      input(type='text', name='date', class='form-control', placeholder='Date and Time')
+                      input(type='text', name='date', class='form-control', placeholder='Date and Time', value='#{event.date}')
                       span.input-group-addon
                         span.glyphicon.glyphicon-calendar
-                    select(name='type', class='form-control', placeholder='Activity')
+                    select(name='type', class='form-control', placeholder='Activity', value='#{event.type}')
                       each item in sportsEnum
                         option= item
-                    textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
-                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players')
+                    textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description') #{event.description}
+                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players', value='#{event.numRequired}')
                     button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
                   form#editEvent(action='/delete', method='POST')
                     input(name='id', value=event._id, style='display:none')
@@ -78,13 +79,18 @@ block content
                       li.comment-user
                         if comment.user === null
                           | [deleted user]
-                          p.text-left.comment-text #{comment.text}
                         else
                           |#[a(href='/profile?id='+comment.user._id)=comment.user.fullName]
-                          p.text-left.comment-text #{comment.text}
-                      hr(style="margin-right:50px;")
+                        span.comment-date.dateText #{comment.date}
+                        p.text-left.comment-text #{comment.text}
+                        if user.role === "ADMIN"
+                          form(action='/deleteComment', method='POST')
+                            input( name='event_id', value=event._id, style='display:none')
+                            input( name='comment_id', value=comment._id, style='display:none')
+                            button(class='pull-right delete-comment', type='submit') Delete
+                      hr(style="margin-right:50px; margin-top:30px")
                   div.comment-input-section
                     form#comment(action='/addComment', method='POST')
                       input(name='id', value=event._id, style='display:none')
-                      input(type='text', name='text', class='form-control comment-input', placeholder='Add a comment...', autocomplete='off')
+                      input(type='text', name='text', class='form-control comment-input', placeholder='Add a comment...', autocomplete='off', maxlength='350')
                       button(id='addComment' class='btn btn-default pull-right', type='submit') Comment
