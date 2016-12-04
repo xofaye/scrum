@@ -45,8 +45,6 @@ block content
                     select(name='type', class='form-control', placeholder='Activity', value='#{event.type}')
                       each item in sportsEnum
                         option= item
-                    textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description') #{event.description}
-                    input(type='number', name='numRequired', class='form-control', placeholder='Number of Players', value='#{event.numRequired}')
                     textarea(name='description', cols='40', rows='10', class='form-control', placeholder='Description')
                     input(type='number', name='numRequired', class='form-control', placeholder='Number of Players Required', value='#{event.numRequired}')
                     button(class='btn btn-lg btn-primary btn-block', type='submit') Submit
