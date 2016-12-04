@@ -10,30 +10,31 @@ All users are required to register for an account before they are able to search
 ### Dashboard
 
 ![Dashboard](https://github.com/CSC309-Fall-2016/group14/blob/cecilia/screenshots/Dashboard.jpg)
-
 This is where you will see all the upcoming sports events, and be able to search for events of your particular liking: By sport, location and/or date.You can also navigate to the User Search page for finding a particular user.
+
 
 ### Events
 
 ![Events Page](https://github.com/CSC309-Fall-2016/group14/blob/cecilia/screenshots/Events.jpg)
-
 On the Events page is where you are able to RSVP, Comment, and see all the other applicable information regarding the event. This includes: the organizer, date / time, location and the attendees that are already attending. Users are able RSVP to the event if the event still requires a number of attendees. If Users are already RSVP'd and they decide that they cannot attend any longer, they are easily able to un-RSVP by clicking the "Can't Go" button. Of course, they are able to RSVP again if spots are still available.
+
 
 **Commenting**
 
 Comments are available at the bottom of the events page. Users are able to add comments and delete any previous comments they may have made.
 
+
 **Creating an Event**
 
 ![create an event](https://github.com/CSC309-Fall-2016/group14/blob/cecilia/screenshots/Create_an_Event.jpg)
-
 Any user is able to create an event. The "Create an Event" button is located in the navigation bar where on click, you will be taken to the Create an Event Page. Simply fill out the form with the required information and then hit "Submit" to create the event. Once the event is created, the user is able to edit it's information using the "Edit" button on the event page. Users are also able to cancel the event entirely and "Delete" it. 
+
 
 ### User Profile
 
 ![Users Profile Page](https://github.com/CSC309-Fall-2016/group14/blob/cecilia/screenshots/User_Profile.jpg)
-
 On the Users Profile page, users are able to view their information, the events they've created and the events they've RSVP'd to. Users can also edit their personal information and change their password using the "Edit Profile" button located on the upper right side of the screen. Users can also choose to Delete their accounts if they decide they no longer want to participate in any events.
+
 
 ### Admin Functions
 
