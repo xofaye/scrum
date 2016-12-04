@@ -44,7 +44,8 @@ block content
                       |Organizer: [deleted]
                     else
                       |Organizer: #[a(href='/profile?id='+event.createdBy._id)= event.createdBy.fullName]
-                  li Date: #{event.date}
+                  li Date: 
+                    span.dateText #{event.date}
                   li Location: #{event.location} 
                   li Activity: #{event.type}
                   li Number of Players RSVP'd: #{event.attendees.length}
