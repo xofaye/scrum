@@ -1,7 +1,7 @@
 # Scrum
 
 ## Welcome to Scrum
-We're a group of three University of Toronto students in Computer Science who are passionate about helping you find your love for recreational sports again. Staying active, agile and playing sports has numerous physical, social and psychological benefits, so yay sports!!
+We're a group of three University of Toronto students in Computer Science who are passionate about helping you find your love for recreational sports again. Staying active and participating in team sports has numerous physical, social and psychological benefits. You can use Scrum to browse for recreational sporting events based on activity type, location and date. If you can't find an event you're interested in, then we encourage all users to create their own event! Scrum has built-in RSVP and commenting functionality to facilitate the event planning process. 
 
 ## Navigating the application
 
@@ -77,4 +77,6 @@ db.users.find().pretty()
 
 ## Credits
 
-Big thanks to [SweetAlert](https://github.com/t4t5/sweetalert) for providing the sweet alerts.
+* Big thanks to [SweetAlert](https://github.com/t4t5/sweetalert) for providing the sweet alerts.
+* Thanks to [Freepik](www.freepik.com) for the sports and avator vectors 
+* Photos from [Unsplash](www.unsplash.com) 
