@@ -78,5 +78,5 @@ db.users.find().pretty()
 ## Credits
 
 * Big thanks to [SweetAlert](https://github.com/t4t5/sweetalert) for providing the sweet alerts.
-* Thanks to [Freepik](www.freepik.com) for the sports and avator vectors 
-* Photos from [Unsplash](www.unsplash.com) 
+* Thanks to [Freepik](http://www.freepik.com) for the sports and avator vectors 
+* Photos from [Unsplash](http://www.unsplash.com) 
