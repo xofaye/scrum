@@ -23,6 +23,8 @@ module.exports.addEvent = function(req, res) {
 		User.findOne({_id: req.user._id}, function(err, user) {
 			if (err) throw err;
 			user.eventsCreated.push(newEvent._id);
+			user.eventsGoing.push(newEvent._id);
+
 			user.save(function(err, user) {
 				if (err) throw err;
 				res.send(newEvent._id);
