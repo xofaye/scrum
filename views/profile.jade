@@ -60,11 +60,17 @@ block content
 					#events
 						h1.text-left.login-title Events Created
 						ul
-							each event in profile.eventsCreated
-								li
-									a(href='/event?id='+event._id)= event.title
+							if profile.eventsCreated.length > 0
+								each event in profile.eventsCreated
+									li
+										a(href='/event?id='+event._id)= event.title
+							else 
+								| No recent events
 						h1.text-left.login-title Events Going
 						ul
-							each event in profile.eventsGoing
-								li
-									a(href='/event?id='+event._id)= event.title
+							if profile.eventsGoing.length > 0
+								each event in profile.eventsGoing
+									li
+										a(href='/event?id='+event._id)= event.title
+							else 
+								| No recent events
