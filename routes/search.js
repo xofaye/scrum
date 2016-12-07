@@ -13,13 +13,16 @@ module.exports.findEvents = function(req, res) {
 	
 	if (req.query.type) {
 		context["type"] = req.query.type;
-	} if(req.query.location){
+	} 
+	if(req.query.location){
 		context["location"] = {$regex : ".*" + req.query.location + ".*", $options : 'i'};
-	} if (req.query.startdate){
+	} 
+	if (req.query.startdate){
 		startdate = req.query.startdate;
 		//startdate = new Date(req.query.startdate); 
 		//console.log("start date: " + startdate);
-	} if(req.query.enddate){
+	} 
+	if(req.query.enddate){
 		enddate = req.query.enddate;
 		//enddate = new Date(req.query.enddate);
 		//console.log("enddate: " + enddate);

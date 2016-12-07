@@ -177,7 +177,7 @@ module.exports.updateEvent = function(req, res) {
 			newLoc = event.location;
 		}
 
-		if( newDate === "") {
+		if( newDate === "" || newDate <= Date.now()) {
 			console.log("empty date");
 			newDate = event.date;
 		}
